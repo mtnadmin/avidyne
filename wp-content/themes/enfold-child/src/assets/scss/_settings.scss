@@ -91,7 +91,7 @@ $black: #000000;
 $white: #ffffff;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Maven Pro', sans-serif;
+$body-font-family: 'Rubik', sans-serif;
 $heading-font-family: 'Maven Pro', sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -120,7 +120,6 @@ $print-transparent-backgrounds: true;
 $breakpoints: (
   small: 0, // Standard phone
   medium: 640px, // Large phone and tablet
-  med-larg: 768px, // Large phone and tablet
   large: 1024px, // Standard desktop
   xlarge: 1200px, // ???
   xxlarge: 1440px, // CRAZY Large

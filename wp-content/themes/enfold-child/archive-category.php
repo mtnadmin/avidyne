@@ -22,7 +22,7 @@
 		
 		do_action( 'ava_after_main_title' );
 	?>
-    <?php echo do_shortcode("[avidyne-fallback-header]");?>
+    <?php // echo do_shortcode("[avidyne-fallback-header]");?>
 		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
 
 			<div class='container template-blog '>

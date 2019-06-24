@@ -190,7 +190,7 @@
                                 $product_title = !empty( $page_fields['product_identifier'] ) ? trim($page_fields['product_identifier']) : $term->name;
                                 if ( true ) {
                                     $toggle = '';
-                                    $total_files = count( $current_doc['files'] ) ;
+                                    $total_files = count( $current_doc ) ;
                                     foreach( $current_doc as $item ) {
                                         foreach( $item['files'] as $file ) {
                                             $download_url = $file['url'];
@@ -205,7 +205,7 @@
                                         }
                                     }
                                     $product_downloads .= "
-                                        [av_toggle_container initial='0' mode='accordion' sort='' styling='' colors='' font_color='' background_color='' border_color='' hover_colors='' hover_background_color='' hover_font_color='' colors_current='' font_color_current='' background_current='' background_color_current='' background_gradient_current_color1='' background_gradient_current_color2='' background_gradient_current_direction='vertical' av_uid='' custom_class='avidyne-documentation-section all legacy current'][av_toggle title='". $product_title ."' tags='']". $toggle ."[/av_toggle][/av_toggle_container]
+                                        [av_toggle_container initial='0' mode='accordion' sort='' styling='' colors='' font_color='' background_color='' border_color='' hover_colors='' hover_background_color='' hover_font_color='' colors_current='' font_color_current='' background_current='' background_color_current='' background_gradient_current_color1='' background_gradient_current_color2='' background_gradient_current_direction='vertical' av_uid='' custom_class='avidyne-documentation-section all legacy current'][av_toggle title='". $product_title ." (" . $total_files . ")' tags='']". $toggle ."[/av_toggle][/av_toggle_container]
                                     ";
                                 }
                             endforeach;

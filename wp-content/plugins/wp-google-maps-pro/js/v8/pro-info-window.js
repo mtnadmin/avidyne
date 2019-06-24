@@ -208,7 +208,7 @@ jQuery(function($) {
 			
 			container.append(div);
 		}
-		
+		console.log(marker);
 		if(!empty(marker.linkd) || !empty(marker.link))
 		{
 			var link = empty(marker.link) ? marker.linkd : marker.link;
@@ -217,7 +217,8 @@ jQuery(function($) {
 			
 			a.attr("href", WPGMZA.decodeEntities(link));
 			a.attr("target", this.linkTarget);
-			a.text(this.linkText);
+			a.attr("title", WPGMZA.decodeEntities(link));
+			a.text('View Website');
 			
 			p.append(a);
 			container.append(p);

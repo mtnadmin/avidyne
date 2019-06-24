@@ -11,7 +11,8 @@
 
  	 if( get_post_meta(get_the_ID(), 'header', true) != 'no') echo avia_title();
 
- 	 do_action( 'ava_after_main_title' ); ?>
+ 	 do_action( 'ava_after_main_title' );
+     echo do_shortcode('[avidyne-fallback-header]'); ?>
 
 		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
 

@@ -3,8 +3,7 @@ body.front-page,
 body.page,
 body.single,
 body.category,
-body.archive,
-body.search {
+body.archive {
   font-family: $body-font-family !important;
 }
 
@@ -12,17 +11,6 @@ body.search {
 *::before,
 *::after {
   box-sizing: border-box !important;
-}
-
-.responsive {
-  #top {
-    #wrap_all {
-      .container.full-width {
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-    }
-  }
 }
 
 #top {
@@ -37,24 +25,6 @@ body.search {
       padding: 0;
     }
 
-    .entry-content {
-      a {
-        color: $avidyne-teal;
-      }
-
-    }
-
-    .hr-inner {
-      border-color: $avidyne-teal !important;
-    }
-
-  }
-
-  .special_amp {
-    font-family: $body-font-family !important;
-    font-style: normal;
-    font-size: rem-calc(34);
-    color: $avidyne-blue;
   }
 
   .avidyne {
@@ -125,25 +95,11 @@ body.search {
 
     }
 
-    &-2 {
-      @include breakpoint(small) {
-      }
-
-      @include breakpoint(medium) {
-        width: 17%
-      }
-
-      @include breakpoint(large) {
-      }
-
-    }
-
   }
 
 }
 
-.page-template-page-product-documentation,
-.page-template-page-media-library {
+.page-template-page-product-documentation {
   #support-filters {
     .filter-wrapper {
       text-align: center;
@@ -218,25 +174,10 @@ body.search {
   .toggler {
     font-size: rem-calc(17);
     color: $satan-gray !important;
-    @include breakpoint(small) { // 0+
-      margin-left: 0;
-    }
-    @include breakpoint(768) { // 768
-      padding-left: rem-calc(70);
-    }
-    @include breakpoint(large) { // 1024
-
-    }
-    @include breakpoint(xlarge) { // 1200
-       margin-left: 6%;
-    }
-    @include breakpoint(xxlarge) { // 1440
-
-    }
+    padding-left: rem-calc(70);
   }
 
   .tab_inner_content {
-    
     .togglecontainer {
       &:first-child {
         .toggler {
@@ -291,7 +232,7 @@ body.search {
     a {
       color: $avidyne-teal;
       text-transform: uppercase;
-      font-weight: $global-weight-medium;
+      font-weight: $global-weight-bold;
       display: block;
       font-size: rem-calc(15);
       transition: all 250ms ease-in-out;
@@ -307,495 +248,215 @@ body.search {
 
 }
 
-.page-template-page-media-library {
-  .tab_titles {
-    display: none;
-  }
-  .document-wrapper {
-    border-bottom: 1px solid #EEE;
-    padding: rem-calc(20 0);
-  }
-  .avidyne-rows {
-    .row {
-      display: table;
-      div {
-        display: table-cell;
-        vertical-align: middle;
-      }
-      &.media-title {
-        a {
-          font-size: rem-calc(22);
-          color: $satan-gray;
-          display: block;
-        }
-      }
-      &.media-preview {
-        div {
-          div {
-            position: relative;
-            width: rem-calc(100);
-            height: rem-calc(100);
-            overflow: hidden;
-            display: block;
-            img {
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              right: 0;
-              margin: auto;
-              display: block;
-              max-width: rem-calc(200);
-              width: rem-calc(200);
-              height: auto;
-            }
-          }
-        }
-      }
-      &.media-download {
-        a {
-          display: block;
-          text-align: right;
-          color: $avidyne-teal;
-          font-size: rem-calc(20);
-          &::before {
-            content: '';
-            background-image: url('../images/documents.png');
-            background-size: rem-calc(25 25);
-            width: rem-calc(25);
-            height: rem-calc(25);
-            display: inline-block;
-            margin-right: rem-calc(5);
-            position: relative;
-            top: rem-calc(6);
-          }
-        }
-      }
-    }
-  }
-}
-
 #top.single-product,
 #top.archive,
 #top.page,
-#top.single,
-#top.search {
+#top.single {
+  .container {
+    h1 {
+      &#product-main-title {
+        padding: rem-calc(275) 0;
+        text-align: center;
+        color: $white;
+        font-weight: $global-weight-medium;
+        line-height: 1.2;
+        font-size: rem-calc(42);
 
-  #accordion_slider_0 {
-    @include breakpoint(small) {
-      // 0+
-      display: none;
-    }
-
-    @include breakpoint(large) {
-      // 1024
-      display: block;
-    }
-
-  }
-
-  #ifd-mobile-accordion-slider {
-      .mobile-accordion-slide,
-      .mobile-accordion-slide > .wrapper {
-        background-size: 1280px 430px;
-        background-repeat: no-repeat;
-        background-color: rgba(0, 0, 0, .5);
-        min-height: rem-calc(430);
-
-        @include breakpoint(small) {
-          // 1024
-          width: 100%;
-        }
-
-        &.money-back {
-          background-image: url('../images/promo-guarantee.jpg');
-        }
-
-        &.big-glass {
-          background-image: url('../images/promo-ifd100.jpg');
-        }
-
-        &.better-together {
-          background-image: url('../images/promo-better-together.jpg');
+        & > span {
+          font-size: rem-calc(50);
         }
 
       }
 
-      .mobile-accordion-slide > .wrapper {
-        padding: rem-calc(115 30);
+    }
 
-        p,
-        h3,
-        a {
-          color: $white;
+    .full-width {
+      &.no-padding {
+        padding: 0 !important;
+
+        img {
+          margin: 0 !important;
         }
 
         p {
-          br {
-            @include breakpoint(small) {
-              // 0+
-              display: none;
-            }
+          padding: rem-calc(40 0 20);
+        }
 
-            @include breakpoint(large) {
-              // 1024
-              display: inline-block;
-            }
+      }
 
-          }
+    }
 
-          @include breakpoint(small) {
-            // 0+
-            font-size: rem-calc(15);
-          }
+    .thin-content-divider {
+      .container {
+        padding: 0;
 
-          @include breakpoint(medium) {
-            // 0+
-            font-size: rem-calc(18);
-          }
+        & > div {
+          height: rem-calc(1);
+          margin: rem-calc(40 0);
+          background: #e8e8e8;
+        }
 
-          @include breakpoint(large) {
-            // 1024
-            display: inline-block;
+      }
+
+    }
+
+    .post-title {
+      font-size: rem-calc(36);
+      font-weight: $global-weight-normal;
+      color: $black;
+    }
+
+    .product-price {
+      margin: rem-calc(150 0 25);
+      display: block;
+      color: $satan-gray;
+
+      span {
+        display: inline-block;
+        font-size: rem-calc(24);
+      }
+
+    }
+
+    .tab_titles {
+      text-align: center;
+      border-top: 1px solid $avidyne-extra-color;
+      border-bottom: 1px solid $avidyne-extra-color;
+      max-width: rem-calc(1310);
+      margin: auto auto rem-calc(50);
+      float: none;
+
+      .tab {
+        float: none;
+        display: inline-block;
+        border: 0;
+        text-transform: uppercase;
+        background: transparent;
+        font-size: rem-calc(14);
+        position: relative;
+
+        &.active_tab {
+          &::after {
+            content: '';
+            display: block;
+            height: rem-calc(2);
+            background-color: $avidyne-blue;
+            max-width: 50%;
+            margin: auto;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
           }
 
         }
 
-        h3 {
-          @include breakpoint(small) {
-            // 0+
-            font-size: rem-calc(22);
-          }
-
-          @include breakpoint(medium) {
-            // 0+
-            font-size: 1.875rem;
-          }
-
-          @include breakpoint(large) {
-            // 1024
-          }
-
+        &:focus {
+          box-shadow: none;
+          border: 0;
+          outline: none;
         }
 
-        a {
-          padding: 0.625rem 1.875rem !important;
-          color: $white !important;
-          border-color: $white !important;
-          border-width: 0.125rem;
-          border-style: solid;
-          background: transparent;
-          transition: all 250ms ease-in-out;
+      }
+
+    }
+
+    .av_tab_section {
+      .tab_content {
+        border-top: 0;
+      }
+
+    }
+
+    .product-excerpt {
+      p {
+        font-size: rem-calc(12) !important;
+      }
+
+    }
+
+    .single-product-social {
+      .av-share-box {
+        clear: none;
+        float: none;
+        width: auto;
+
+        h5 {
+          display: none;
+          visibility: hidden;
+        }
+
+      }
+
+    }
+
+    .product-links {
+      border-bottom: 1px solid $avidyne-extra-color;
+      margin-bottom: rem-calc(15);
+
+      a {
+        background: transparent;
+        transition: all .25s ease-in-out;
+
+        &.request-info {
+          border-color: $avidyne-blue;
+          color: $avidyne-blue;
 
           &:hover {
-            background: #ffffff;
-            color: #000 !important;
-            border-color: #ffffff;
-            transition: all 250ms ease-in-out;
-            cursor: pointer;
+            background: $avidyne-blue;
+            color: $white;
+          }
+
+        }
+
+        &.find-a-dealer {
+          border-color: $avidyne-green;
+          color: $avidyne-green;
+
+          &:hover {
+            background: $avidyne-green;
+            color: $white;
+          }
+
+        }
+
+        &:first-child {
+          margin-right: rem-calc(20);
+        }
+
+        &:hover {
+          transition: all .25s ease-in-out;
+        }
+
+      }
+
+    }
+
+    .avia-gallery {
+      margin-bottom: rem-calc(50);
+
+      .avia-gallery-big {
+        margin-bottom: rem-calc(20);
+      }
+
+      .avia-gallery-thumb {
+        .slick-list {
+          width: 100%;
+
+          .slick-track {
+            width: 100% !important;
           }
 
         }
 
       }
 
-      @include breakpoint(large) {
-        // 1024
-        display: none;
-      }
-
     }
 
-  #header-area {
-    background-repeat: no-repeat;
-  }
-
-  h1 {
-    &#product-main-title,
-    &#page-main-title {
-      text-align: center;
-      color: $white;
-      font-weight: $global-weight-medium;
-      line-height: 1.2;
-
-      @include breakpoint(small) {
-        padding: 5% 0;
-        font-size: rem-calc(18);
-        margin: 0;
-        br {
-          display: none;
-        }
-      }
-
-      @include breakpoint(medium) {
-        padding: 13% 0;
-        font-size: rem-calc(20);
-      }
-
-      @include breakpoint(large) {
-        br {
-          display: inline-block;
-        }
-      }
-
-      @include breakpoint(1400) {
-        padding: 15% 0;
-        font-size: rem-calc(22);
-      }
-
-      @include breakpoint(1750) {
-        padding: 20% 0;
-        font-size: rem-calc(26);
-      }
-
-      & > span {
-        @include breakpoint(small) { // 0+
-          font-size: rem-calc(24);
-        }
-        @include breakpoint(medium) { // 640
-
-        }
-        @include breakpoint(large) { // 1024
-          font-size: rem-calc(50);
-          br {
-            display: inline-block;
-          }
-        }
-        @include breakpoint(xlarge) { // 1200
-
-        }
-        @include breakpoint(xxlarge) { // 1440
-
-        }
-      }
-
-    }
-
-  }
-
-  .full-width {
-    &.no-padding {
-      padding: 0 !important;
-
-      img {
-        margin: 0 !important;
-      }
-
-      p {
-        padding: rem-calc(40 0 20);
-      }
-
-    }
-
-  }
-
-  .thin-content-divider {
-    .container {
-      padding: 0;
-
-      & > div {
-        height: rem-calc(1);
-        margin: rem-calc(40 0);
-        background: #e8e8e8;
-      }
-
-    }
-
-  }
-
-  .post-title {
-    font-size: rem-calc(24);
-    font-weight: $global-weight-normal;
-    color: $satan-gray;
-    @include breakpoint(med-larg) {
-      font-size: rem-calc(36);
-    }
-  }
-
-  .product-price {
-    display: block;
-    color: $satan-gray;
-
-    @include breakpoint(small) { // 0+
-      margin: rem-calc(25 0 25);
-    }
-    @include breakpoint(medium) { // 640
-
-    }
-    @include breakpoint(large) { // 1024
-      br {
-        display: inline-block;
-      }
-    }
-    @include breakpoint(xlarge) { // 1200
-      margin: rem-calc(150 0 25);
-    }
-    @include breakpoint(xxlarge) { // 1440
-
-    }
-
-    span {
-      display: inline-block;
-      font-size: rem-calc(24);
-    }
-
-  }
-
-  .tab_inner_content {
-    @include breakpoint(med-larg) {
-      margin: 35px 0;
-    }
-  }
-
-  .tab_titles {
-    text-align: center;
-    border-top: 1px solid $avidyne-extra-color;
-    border-bottom: 1px solid $avidyne-extra-color;
-    max-width: rem-calc(1310);
-    margin: auto auto rem-calc(50);
-    float: none;
-
-    .tab {
-      float: none;
-      display: inline-block;
+    &_wrap {
       border: 0;
-      text-transform: uppercase;
-      background: transparent;
-      font-size: rem-calc(14);
-      position: relative;
-
-      &.active_tab {
-        &::after {
-          content: '';
-          display: block;
-          height: rem-calc(2);
-          background-color: $avidyne-blue;
-          max-width: 50%;
-          margin: auto;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-        }
-
-      }
-
-      &:focus {
-        box-shadow: none;
-        border: 0;
-        outline: none;
-      }
-
     }
 
-  }
-
-  .av_tab_section {
-    .tab_content {
-      border-top: 0;
-    }
-
-  }
-
-  .product-excerpt {
-    p {
-      font-size: rem-calc(12) !important;
-    }
-
-  }
-
-  .single-product-social {
-    .av-share-box {
-      clear: none;
-      float: none;
-      width: auto;
-
-      h5 {
-        display: none;
-        visibility: hidden;
-      }
-
-    }
-
-  }
-
-  .product-links {
-    border-bottom: 1px solid $avidyne-extra-color;
-    margin-bottom: rem-calc(15);
-
-    a {
-      background: transparent;
-      transition: all .25s ease-in-out;
-
-      &.request-info {
-        border-color: $avidyne-blue;
-        color: $avidyne-blue;
-
-        &:hover {
-          background: $avidyne-blue;
-          color: $white;
-        }
-
-      }
-
-      &.download-now {
-        border-color: $avidyne-teal;
-        color: $avidyne-teal;
-        margin-top: rem-calc(20);
-
-        &:hover {
-          background: $avidyne-teal;
-          color: $white;
-        }
-
-      }
-
-      &.find-a-dealer {
-        border-color: $avidyne-green;
-        color: $avidyne-green;
-
-        &:hover {
-          background: $avidyne-green;
-          color: $white;
-        }
-
-      }
-
-      &:first-child {
-        margin-right: rem-calc(20);
-      }
-
-      &:hover {
-        transition: all .25s ease-in-out;
-      }
-
-    }
-
-  }
-
-  .avia-gallery {
-    margin-bottom: rem-calc(50);
-
-    .avia-gallery-big {
-      margin-bottom: rem-calc(20);
-    }
-
-    .avia-gallery-thumb {
-      .slick-list {
-        width: 100%;
-
-        .slick-track {
-          width: 100% !important;
-        }
-
-      }
-
-    }
-
-  }
-
-  &_wrap {
-    border: 0;
   }
 
   .avia-gallery .avia-gallery-thumb {
@@ -819,26 +480,22 @@ body.search {
   }
 
   #product-overview-content {
-    padding: 0;
 
     h1,
     h2,
     h3 {
       display: block;
-      font-size: rem-calc(24);
+      font-size: rem-calc(36);
       font-weight: $global-weight-normal;
       color: $avidyne-accent;
       line-height: 1.2;
-      @include breakpoint(med-larg) {
-        font-size: rem-calc(36);
-      }
     }
 
     h4 {
       display: block;
       font-size: rem-calc(16);
       font-weight: $global-weight-extra-bold;
-      color: $satan-gray;
+      color: $avidyne-accent;
     }
 
     b {
@@ -847,16 +504,158 @@ body.search {
     }
 
     p {
-      font-size: rem-calc(16);
+      font-size: rem-calc(19);
       color: $satan-gray;
       font-weight: $global-weight-light;
-      @include breakpoint(med-larg) {
-        font-size: rem-calc(19);
-      }
     }
 
-    .container {
-      padding: 0;
+    .product-overview-section {
+      padding: rem-calc(75 15);
+      &.no-padding-top {
+        padding-top: 0 !important;
+      }
+      .container {
+        float: none;
+      }
+
+      &#product-overview-section-1,
+      &#product-overview-section-2,
+      &#product-overview-section-3,
+      &#product-overview-section-4,
+      &#product-overview-section-5,
+      &#product-overview-section-6,
+      &#product-overview-section-7,
+      &#product-overview-section-8,
+      &#product-overview-section-9,
+      &#product-overview-section-10 {
+        background: transparent;
+        &.full-width {
+          &.gray-background {
+            background: $avidyne-extra-color;
+          }
+        }
+        &.ifd550-duo-comparison {
+          &.gray-background {
+            background: #F8F8F8 !important;
+            border-top: 1px solid #e8e8e8;
+          }
+        }
+      }
+
+      &#product-overview-section-2,
+      &#product-overview-section-4 {
+        // margin: rem-calc(50) auto rem-calc(100);
+        margin: 0;
+        padding: rem-calc(75 15);
+
+        .full-width-section {
+          position: relative;
+          width: 100%;
+          left: 0;
+          right: 0;
+
+          .container {
+            padding: 0;
+
+            p {
+              font-size: rem-calc(19) !important;
+
+              &:last-child {
+                margin: 0;
+              }
+
+              a {
+                margin-top: rem-calc(25);
+                display: table;
+                clear: both;
+                @include white-hollow-btn($avidyne-teal, #FFF, "");
+              }
+
+            }
+
+          }
+
+        }
+
+        img {
+          margin-top: rem-calc(35);
+        }
+
+      }
+
+      &#product-overview-section-2 {
+        img {
+          margin-top: rem-calc(60);
+        }
+
+      }
+
+      &.product-overall-comparison-chart,
+      &.product-duo-comparison-chart {
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f0f0f0+100&0+0,0.65+100 */
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(240, 240, 240, 0.65) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6f0f0f0', GradientType=0) !important; /* IE6-9 */
+        padding: rem-calc(0 0 150);
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      &.product-duo-comparison-chart {
+        padding: rem-calc(100 0 50);
+
+        .condition {
+          font-size: rem-calc(20);
+          color: $satan-gray;
+          padding: rem-calc(100 0 50);
+          font-weight: $global-weight-light;
+        }
+
+        .gw-go-header {
+          strong {
+            font-weight: $global-weight-light;
+            display: block;
+            font-size: rem-calc(16);
+          }
+
+          span.comparison-price {
+            font-size: rem-calc(30);
+            color: $black;
+            display: block;
+            margin: rem-calc(30) auto;
+            color: $satan-gray;
+          }
+
+        }
+
+        h3,
+        h4 {
+          text-align: center;
+        }
+
+        h3 {
+        }
+
+        h4 {
+          font-size: rem-calc(30);
+
+          &.avidyne-green {
+            color: $avidyne-green;
+          }
+
+          & + p {
+            text-align: center;
+          }
+
+        }
+
+        p {
+          font-size: rem-calc(20);
+        }
+
+      }
+
     }
 
   }
@@ -864,9 +663,6 @@ body.search {
   #related-products-title {
     text-align: center;
     display: block;
-    color: $avidyne-black;
-    font-size: rem-calc(22);
-    letter-spacing: 3px;
   }
 
   .related-spacer {
@@ -887,117 +683,11 @@ body.search {
     padding: 0;
     margin: 0 0 rem-calc(100) 0;
 
-    .related-product {
-      position: relative;
-    }
-
-    .highlight {
-      .compatible-product {
-        position: relative;
-        background-color: $avidyne-green;
-        color: $white;
-        text-align: center;
-        font-size: rem-calc(16);
-        margin: auto;
-        padding: rem-calc(5 0);
-        bottom: 35px;
-        left: 0;
-        right: 0;
-        width: 100%;
-      }
-      span {
-        margin-top: rem-calc(-30);
-      }
-    }
-
-    .product-title {
-      display: none;
-      line-height: 1.3;
-      position: absolute;
-      width: 100%;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      margin: auto;
-      height: rem-calc(50);
-    }
-
-    span {
-      color: $avidyne-green;
-      text-align: center;
-      font-size: rem-calc(18);
-    }
-
-    .image-overlay {
-      display: none !important;
-    }
-
     li {
-      a {
-        position: relative;
-      }
-
-    }
-
-    .fa {
-      &::before {
-        font-family: FontAwesome !important;
-      }
-
-      &:after {
-        font-family: FontAwesome !important;
-      }
-
-    }
-
-    .slick-slider {
-      min-height: rem-calc(200) !important;
-    }
-
-    .slick-dots li.slick-active button {
-      // border: 1px solid $avidyne-green;
-      // border-radius: 50%;
-      // width: rem-calc(10) !important;
-      // height: rem-calc(10) !important;
-
-      &:before {
-        color: $avidyne-green;
-      }
-
-      &:hover {
-        &::before {
-          color: $avidyne-green;
-        }
-
-      }
-
-    }
-
-    li {
-      width: rem-calc(10);
-      height: rem-calc(10);
-
       img {
         display: block;
         margin: auto;
-        width: 100%;
-      }
-
-      br {
-        display: none;
-      }
-
-      span {
-        display: block;
-        text-align: center;
         padding: rem-calc(0 10);
-        font-size: rem-calc(20);
-      }
-
-      button {
-        width: rem-calc(10);
-        height: rem-calc(10);
       }
 
     }
@@ -1021,7 +711,7 @@ body.search {
     }
 
     .aviaccordion-preview-title {
-      padding: 0 10%;
+      padding: 5% 10%;
     }
 
     h3 {
@@ -1029,7 +719,6 @@ body.search {
       font-size: rem-calc(30);
       line-height: 1.2;
       margin-bottom: rem-calc(15);
-      color: $white;
     }
 
     p {
@@ -1060,149 +749,27 @@ body.search {
 
 }
 
+
 #top.single-product {
-  .container .av-content-small.units {
-    width: 100% !important;
-    border: 0 !important;
-  }
-  #mobile-chart-filter {
-    display: none;
-    text-align: center;
-    div {
-      display: inline-block;
-      margin: rem-calc(0 5);
-      button {
-        border: 1px solid $avidyne-green;
-        padding: rem-calc(5 20);
-        color: $avidyne-green;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  #after_full_slider_0 > .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0;
-  }
-  .tabcontainer .active_tab,
-  .tabcontainer .tab {
-    @include breakpoint(small) {
-      font-size: rem-calc(20);
-    }
-    @include breakpoint(med-larg) {
-      font-size: rem-calc(16);
-    }
-  }
-  #tab-id-1-container,
-  #tab-id-2-container {
-    @include breakpoint(small) {
-      padding: 35px 0 !important;
-    }
-    @include breakpoint(med-larg) {
-      padding: 0 !important;
-    }
-  }
   .post-title {
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: rem-calc(20);
     display: block;
-
     & + p {
       color: $satan-gray;
       font-size: rem-calc(19) !important;
       line-height: 1.4;
     }
-
-    &::after {
-      content: '';
-      width: rem-calc(150);
-      height: rem-calc(3);
-      background: $avidyne-teal;
-      display: block;
-      margin-top: rem-calc(15);
-    }
-
     .product-excerpt {
       p {
         color: $satan-gray;
         display: block;
       }
-
     }
-
   }
-
-  .avia-accordion-slider-wrap {
-    margin-bottom: rem-calc(75);
-  }
-
-  .entry-content {
-    p,
-    h4 {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    h4 {
-      max-width: rem-calc(900);
-    }
-
-  }
-
 }
 
-#top.page,
-#top.single {
-  h1,
-  h2,
-  h3 {
-    display: block;
-    font-weight: $global-weight-normal;
-    color: $avidyne-accent;
-    line-height: 1.2;
-    margin-left: auto;
-    margin-right: auto;
-    @include breakpoint(small) { // 0+
-      font-size: rem-calc(24);
-    }
-    @include breakpoint(medium) { // 640
-
-    }
-    @include breakpoint(large) { // 1024
-      font-size: rem-calc(36);
-      br {
-        display: inline-block;
-      }
-    }
-    @include breakpoint(xlarge) { // 1200
-
-    }
-    @include breakpoint(xxlarge) { // 1440
-
-    }
-  }
-
-  h4 {
-    display: block;
-    font-size: rem-calc(16);
-    font-weight: $global-weight-extra-bold;
-    color: $avidyne-accent;
-  }
-
-  b {
-    color: $satan-gray;
-    font-weight: $global-weight-medium;
-  }
-
-  p,
-  li {
-    font-size: rem-calc(19);
-    color: $satan-gray;
-    font-weight: $global-weight-light;
-  }
-
+#top.page {
   .teal-button {
     @include white-hollow-btn($avidyne-teal, #FFF, "");
     display: table;
@@ -1211,22 +778,6 @@ body.search {
 
     &::after {
       transform: rotate(-45deg);
-    }
-
-  }
-
-  .avidyne-document {
-    border-bottom: 1px solid #EEE;
-    padding: rem-calc(20 0);
-
-    a {
-      color: $avidyne-teal;
-      display: block;
-      font-size: rem-calc(20);
-    }
-
-    &:last-child {
-      border: 0;
     }
 
   }
@@ -1296,126 +847,15 @@ body.search {
     font-size: rem-calc(20);
 
     & > span {
-      font-weight: $global-weight-medium;
+      font-size: rem-calc(50);
+      font-weight: $global-weight-bold;
       display: block;
       margin-bottom: rem-calc(15);
-      @include breakpoint(small) { // 0+
-        font-size: rem-calc(24);
-      }
-      @include breakpoint(medium) { // 640
-
-      }
-      @include breakpoint(large) { // 1024
-        font-size: rem-calc(50);
-        br {
-          display: inline-block;
-        }
-      }
-      @include breakpoint(xlarge) { // 1200
-
-      }
-      @include breakpoint(xxlarge) { // 1440
-
-      }
     }
 
   }
 
-  .entry-content-wrapper {
-    padding: 0 !important;
-  }
-
-  &.page-template-page-product-warranty-registration {
-    #main {
-      .full-width {
-        .standard-product-warranty.gray-gradient {
-          padding-bottom: rem-calc(50) !important;
-        }
-
-        .tab_content,
-        .av_tab_section {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-
-        .tabcontainer,
-        .tab_inner_content {
-          margin-bottom: 0 !important;
-        }
-
-        .av_textblock_section {
-          display: block;
-          max-width: $global-width;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .menu-footer-menu-one-container,
-        .menu-footer-menu-two-container {
-          margin-left: 0;
-
-          ul {
-            padding-left: 0;
-            float: left;
-          }
-
-        }
-
-        ol {
-          padding-left: rem-calc(20) !important;
-          display: block;
-
-          li {
-            margin-bottom: rem-calc(20);
-            list-style-position: inside;
-          }
-
-        }
-
-        p {
-          padding: 0 !important;
-        }
-
-      }
-
-    }
-
-    .thin-teal {
-      color: $avidyne-teal;
-      display: inline-block;
-    }
-
-    .avidyne-teal {
-      @include white-hollow-btn($avidyne-teal, #FFF, "");
-      font-size: rem-calc(16);
-
-      &.centered-button {
-        display: table;
-        margin: rem-calc(20) auto 0;
-      }
-
-    }
-
-    .product-overview-section {
-      .container {
-        max-width: rem-calc(1200);
-      }
-
-      strong, h2, h3, h4 {
-        color: $avidyne-blue;
-      }
-
-      ul {
-        padding-left: rem-calc(40);
-        margin: rem-calc(30 0);
-      }
-
-    }
-
-  }
-
-  &.page-template-page-fullwidth,
-  &.page-template-page-fullwidth-thin {
+  &.page-template-page-fullwidth {
     #main {
       main.full-width {
         width: 100%;
@@ -1484,8 +924,6 @@ body.search {
 
       p {
         font-size: rem-calc(19);
-        margin-left: auto;
-        margin-right: auto;
       }
 
     }
@@ -1529,53 +967,8 @@ body.search {
 
   }
 
-  &.page-template-page-fullwidth-thin,
-  &.page-template-page-product-warranty-registration {
-    h1,
-    h2,
-    h3 {
-      color: $black;
-      font-weight: $global-weight-medium;
-      text-transform: capitalize;
-      font-size: rem-calc(28);
-    }
-
-    #main {
-      main.full-width-thin-content {
-        width: 100%;
-        border: 0;
-        padding: 0;
-
-        .av_tab_section {
-          padding: 0;
-          max-width: rem-calc(900);
-          margin: auto !important;
-          float: none;
-          display: block;
-        }
-
-        .entry-content-wrapper {
-          padding: 0;
-          max-width: rem-calc(900);
-          margin: auto;
-        }
-
-        p,
-        .avia_textblock {
-          max-width: 100%;
-          font-size: rem-calc(19);
-          color: $satan-gray;
-        }
-
-      }
-
-    }
-
-  }
-
   .support-callout {
-    margin-top: rem-calc(50);
-    margin-bottom: rem-calc(50);
+    margin: rem-calc(50 0);
 
     .avia_textblock {
       h2 {
@@ -1583,7 +976,7 @@ body.search {
         font-size: rem-calc(24);
         margin-bottom: rem-calc(25);
         line-height: 1.3;
-        font-weight: $global-weight-medium;
+        font-weight: $global-weight-bold;
         text-transform: capitalize;
       }
 
@@ -1609,7 +1002,6 @@ body.search {
           display: block;
           text-align: center;
           font-weight: $global-weight-normal;
-          line-height: 1.2;
         }
 
         &.alt-phone,
@@ -1683,8 +1075,8 @@ body.search {
 
 .tax-product_categories {
   .wrapper.main-content-wrapper {
-    // background: #f3f3f3;
-    // border-bottom: 2px solid #EEE;
+    background: #f3f3f3;
+    border-bottom: 2px solid #EEE;
   }
 
   #main {
@@ -1699,8 +1091,7 @@ body.search {
         text-align: center;
       }
 
-      .entry-content,
-      .product-overview-section {
+      .entry-content {
         max-width: rem-calc(930);
         margin: auto;
 
@@ -1714,18 +1105,14 @@ body.search {
           font-size: rem-calc(30);
           margin-top: 0;
           margin-bottom: rem-calc(25);
-          font-weight: $global-weight-medium;
+          font-weight: $global-weight-bold;
         }
 
         .av_one_third {
-          p, a {
+          p {
             min-height: rem-calc(100);
             margin: 0;
             position: relative;
-
-            a {
-              display: block;
-            }
 
             img {
               position: absolute;
@@ -1745,22 +1132,11 @@ body.search {
           margin-right: 0;
 
           strong {
-            color: $avidyne-blue;
+            color: $satan-gray;
           }
 
         }
 
-        li {
-          margin-bottom: rem-calc(20);
-        }
-
-      }
-
-      .product-overview-section {
-        padding: 0;
-        .container {
-          padding: 0;
-        }
       }
 
     }
@@ -1773,107 +1149,17 @@ body.search {
 
 }
 
-.term-gps-nav-comm {
-  .wrapper {
-    padding: 0 !important;
-
-    .container {
-      padding: 0 !important;
-    }
-
-  }
-
-  #main {
-    .container {
-      max-width: 100% !important;
-    }
-
-    main.full-width {
-      .entry-content {
-        // max-width: 100% !important;
-      }
-
-    }
-
-    .product-overview-section {
-      padding-left: 0;
-      padding-right: 0;
-
-      .container {
-        padding: 0;
-        max-width: rem-calc(930) !important;
-        margin-left: auto;
-        margin-right: auto;
-
-        .general-section-wrapper {
-          margin: 0;
-
-          .container {
-            max-width: rem-calc(930) !important;
-            margin: auto;
-
-            h3 {
-              color: $avidyne-accent;
-              font-size: rem-calc(30);
-              margin-top: 0;
-              margin-bottom: rem-calc(25);
-              font-weight: $global-weight-medium;
-            }
-
-            strong {
-              font-weight: $global-weight-bold;
-              display: block;
-              font-size: rem-calc(20);
-              color: $satan-gray;
-              line-height: 1.4;
-              margin-top: rem-calc(40);
-            }
-
-            p {
-              font-size: rem-calc(19);
-              color: $satan-gray;
-              font-weight: $global-weight-light;
-            }
-
-          }
-
-        }
-
-      }
-
-      &.gradient-background {
-
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f0f0f0+100&0+0,0.65+100 */
-        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(240, 240, 240, 0.65) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6f0f0f0', GradientType=0) !important; /* IE6-9 */
-      }
-
-    }
-
-  }
-
-  #related-products {
-    max-width: rem-calc(1310);
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-}
-
-.page-template-page-fullwidth-thin .entry-content,
-.page-template-page-fullwidth-thin .entry-content-wrapper,
 .entry-content-wrapper,
 .entry-content {
   .inner-border-av-border-fat,
   .inner-border-av-border-thin {
-    border-color: $avidyne-teal !important;
+    border-color: $avidyne-blue !important;
     // Override inline styles
   }
 
   .hr-custom {
     margin-bottom: rem-calc(10) !important;
+    // Override inline styles
   }
 
   h2.av-special-heading-tag {
@@ -1882,94 +1168,14 @@ body.search {
     color: $avidyne-accent;
   }
 
-  h2,
-  h3,
   p {
-    // max-width: rem-calc(900);
-    max-width: rem-calc(1200);
+    max-width: rem-calc(900);
     display: block;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  p {
+    margin-left: auto;
+    margin-right: auto;
     color: $satan-gray;
   }
 
-}
-
-.page-template-page-fullwidth {
-    #main {
-      .container_wrap {
-        padding-bottom: 0 !important;
-        .container {
-          max-width: 100%;
-          float: none;
-          padding: 0 !important;
-
-        p, ul, h4, h5 {
-            max-width: rem-calc(1200);
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .lower-case {
-          h2 {
-            text-transform: capitalize;
-          }
-        }
-        .hr-custom.large-margin {
-          margin-bottom: rem-calc(50) !important;
-        }
-        .loyalty-list {
-          margin-top: rem-calc(50);
-          li {
-            margin-bottom: rem-calc(50);
-            margin-left: 0;
-            strong {
-              font-weight: $global-weight-bold;
-              color: $satan-gray;
-              display: block;
-            }
-            &.gear-icon,
-            &.warranty-icon,
-            &.credit-icon {
-              list-style: none;
-              &::before {
-                content: '';
-                background-repeat: no-repeat;
-                background-size: 100px 100px;
-                width: rem-calc(100);
-                height: rem-calc(100);
-                display: block;
-                float: left;
-                margin-right: rem-calc(30);
-              }
-            }
-            &.gear-icon {
-              &:before {
-                background-image: url('../images/rebate@4x.png');
-              }
-            }
-            &.warranty-icon {
-              &:before {
-                background-image: url('../images/avidyne-icons-all_warranty.svg');
-              }
-            }
-            &.credit-icon {
-              &:before {
-                background-image: url('../images/credit@2x.png');
-              }
-            }
-          }
-        }
-      }
-    }
-    #footer {
-      .container {
-        max-width: rem-calc(1310);
-      }
-    }
-  }
 }
 
 .avidyne-icon {
@@ -2012,11 +1218,7 @@ body.search {
 
 #go-pricing-table-3208,
 #go-pricing-table-3249,
-#go-pricing-table-3294,
-#go-pricing-table-3750,
-#go-pricing-table-4443,
-#go-pricing-table-6550,
-#go-pricing-table-6559 {
+#go-pricing-table-3294 {
   margin: rem-calc(25 0);
 
   .gw-go-col.gw-go-clean-style1 .gw-go-body > li.gw-go-even {
@@ -2033,14 +1235,9 @@ body.search {
       border-radius: 50%;
 
       &::before {
-        font-family: FontAwesome !important;
         color: $white;
         padding: rem-calc(5) rem-calc(5);
         display: block;
-      }
-
-      &::after {
-        font-family: FontAwesome !important;
       }
 
     }
@@ -2121,14 +1318,8 @@ body.search {
 
     .label-placeholder {
       display: block;
-      
+      margin: rem-calc(68.3) 0;
       height: 100%;
-      @include breakpoint(small) {
-        padding: 0;
-      }
-      @include breakpoint(med-larg) {
-        padding: rem-calc(68.3) 0;
-      }
     }
 
   }
@@ -2144,247 +1335,11 @@ body.search {
 
   }
 
-  .gw-go-col.gw-go-clean-style1 .gw-go-col-inner {
-    background: transparent !important;
-  }
-
-}
-
-#go-pricing-table-4443 {
-  max-width: rem-calc(750);
-  margin: auto;
-
-  .gw-go-header {
-    display: none !important;
-  }
-
-  .gw-go-body {
-    li {
-      background: transparent !important;
-
-      .avidyne-teal {
-        @include white-hollow-btn($avidyne-teal, $white, "");
-        display: table;
-        margin: rem-calc(12) auto;
-        font-size: rem-calc(16);
-      }
-
-      .fa-times {
-        background: $avidyne-teal !important;
-      }
-
-    }
-
-  }
-
-  .gw-go-col-wrap-0 {
-    .gw-go-body {
-      li {
-        color: $satan-gray !important;
-
-        .gw-go-body-cell {
-          font-size: rem-calc(13) !important;
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-#go-pricing-table-3750 {
-  .gw-go-col.gw-go-clean-style1 .gw-go-body > li.gw-go-even {
-    background: #fdfdfd;
-  }
-
-  .gw-go-col-wrap-0 {
-    .gw-go-col-inner {
-      border: 0 !important;
-      background: transparent;
-
-      .gw-go-body {
-        border-bottom: 0;
-
-        li {
-          background: transparent !important;
-          color: $satan-gray !important;
-        }
-
-      }
-
-    }
-
-    .gw-go-header {
-      background: transparent;
-      padding: rem-calc(5 0) !important;
-    }
-
-  }
-
-  .gw-go-body {
-    border-bottom: 0;
-  }
-
-  .gw-go-header {
-    padding: rem-calc(40 0);
-
-    img {
-      max-width: rem-calc(100);
-      width: 100%;
-      margin: rem-calc(20) auto rem-calc(10) auto !important;
-    }
-
-    h4,
-    strong {
-      color: $white !important;
-    }
-
-    h4 {
-      font-size: rem-calc(28) !important;
-      font-weight: $global-weight-light !important;
-    }
-
-    strong {
-      font-weight: $global-weight-medium;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 0;
-      display: block;
-      font-size: rem-calc(16);
-      font-weight: $global-weight-light;
-    }
-
-    .label-placeholder {
-      display: block;
-      height: 100%;
-      @include breakpoint(small) {
-        padding: 0;
-      }
-      @include breakpoint(large) {
-        padding: rem-calc(68.3) 0;
-      }
-    }
-
-  }
-
-  .gw-go-col-wrap-1 {
-    // padding: 0 !important;
-
-    .gw-go-header {
-      background: #007281;
-
-      h4,
-      strong {
-        text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
-      }
-
-    }
-
-    .gw-go-body {
-      li:nth-child(odd) {
-        background-color: #008f9e;
-        color: $white;
-      }
-
-      li.gw-go-even {
-        background-color: #1c9ca9 !important;
-        color: $white;
-      }
-
-    }
-
-  }
-
-  .gw-go-col-wrap-2,
-  .gw-go-col-wrap-3,
-  .gw-go-col-wrap-4 {
-    .gw-go-header {
-      h4,
-      p {
-        color: $avidyne-teal !important;
-      }
-
-      strong {
-        color: $satan-gray !important;
-      }
-
-    }
-
-  }
-
-  .avidyne-white {
-    @include white-hollow-btn($white, $avidyne-teal, "");
-    display: table;
-    margin: rem-calc(12) auto;
-    font-size: rem-calc(16);
-  }
-
-  .avidyne-teal {
-    @include white-hollow-btn($avidyne-teal, $white, "");
-    display: table;
-    margin: rem-calc(12) auto;
-    font-size: rem-calc(16);
-  }
-
-  .gw-go-col-wrap-1,
-  .gw-go-col-wrap-2,
-  .gw-go-col-wrap-3 {
-    .gw-go-hover {
-      .gw-go-body {
-        li {
-          color: $white;
-          background: #0199a8 !important;
-
-          &.gw-go-even {
-            background: $avidyne-teal !important;
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-.ifd-545-reference {
-  .avidyne-teal {
-    margin-left: 0 !important;
-  }
-
-}
-
-#go-pricing-table-3294 {
-  .gw-go-header {
-    img {
-      max-height: rem-calc(148);
-    }
-
-  }
-
-  .avidyne-white {
-    @include white-hollow-btn($white, $avidyne-teal, "");
-    display: table;
-    margin: rem-calc(12) auto;
-    font-size: rem-calc(16);
-  }
-
-  .avidyne-teal {
-    @include white-hollow-btn($avidyne-teal, $white, "");
-    display: table;
-    margin: rem-calc(12) auto;
-    font-size: rem-calc(16);
-  }
-
 }
 
 #go-pricing-table-3249,
 #go-pricing-table-3294 {
-  min-height: rem-calc(436);
+  margin: rem-calc(100 0);
 
   * {
     border: 0;
@@ -2482,13 +1437,8 @@ body.search {
 
     .label-placeholder {
       display: block;
+      margin: rem-calc(135) 0;
       height: 100%;
-      @include breakpoint(small) {
-        padding: 0;
-      }
-      @include breakpoint(med-larg) {
-        padding: rem-calc(135) 0;
-      }
     }
 
   }
@@ -2533,690 +1483,15 @@ body.search {
 
     }
 
-  }
-
-}
-
-.text-sep {
-  line-height: 1 !important;
-}
-
-.product-overview-section {
-  @include breakpoint(small) {
-    padding: rem-calc(25 15);
-  }
-  @include breakpoint(med-larg) {
-    padding: rem-calc(75 15);
-  }
-
-  &.no-padding-top {
-    padding-top: 0 !important;
-  }
-
-  .container {
-    float: none;
-    @include breakpoint(small) {
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-    @include breakpoint(med-larg) {
-      max-width: 1310px !important;
-    }
-  }
-
-  .avidyne-teal {
-    @include white-hollow-btn($avidyne-teal, #FFF, "");
-    display: table;
-    margin: rem-calc(20) auto 0;
-  }
-
-  &#product-overview-section-0,
-  &#product-overview-section-1,
-  &#product-overview-section-2,
-  &#product-overview-section-3,
-  &#product-overview-section-4,
-  &#product-overview-section-5,
-  &#product-overview-section-6,
-  &#product-overview-section-7,
-  &#product-overview-section-8,
-  &#product-overview-section-9,
-  &#product-overview-section-10 {
-    background: transparent;
-
-    .wp-image-2874,
-    .wp-image-2147,
-    &.ifd-545-reference,
-    &#product-overview-section-1 > div > div > div > div.flex_column.av_one_third.flex_column_div.av-zero-column-padding.first {
-      @include breakpoint(small) {
-        display: none !important;
-        h3 {
-          br {
-            display: none;
-          }
-        }
-      }
-      @include breakpoint(large) {
-        display: block !important;
-        h3 {
-          br {
-            display: inline-block;
-          }
-        }
-      }
-    }
-
-    &#product-overview-section-1 > div > div > div > div.flex_column.av_two_third.flex_column_div.av-zero-column-padding {
-      @media all and (max-width: 768px) {
-        margin: 0 !important;
-        width: 100% !important;
-        padding: rem-calc(20 0);
-      }
-    }
-
-    &.full-width,
-    &.one-hundred-percent {
-      &.gray-background {
-        background: $avidyne-extra-color;
-      }
-
-      &.gray-gradient {
-
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f0f0f0+100&0+0,0.65+100 */
-        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(240, 240, 240, 0.65) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6f0f0f0', GradientType=0) !important; /* IE6-9 */
-      }
-
-    }
-
-    small {
-      font-size: rem-calc(12);
-      line-height: 1.2;
-      clear: both;
-      display: block;
-
-      & + br {
-        display: none;
-      }
-
-    }
-
-
-    &.one-hundred-percent {
-      padding: 0;
-
-      .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-    }
-
-    &.ifd550-duo-comparison {
-      &.gray-background {
-        background: #F8F8F8 !important;
-        border-top: 1px solid #e8e8e8;
-      }
-
-    }
-
-    &.ipad-simulator {
-      border-top: 1px solid #e8e8e8;
-      border-bottom: 1px solid #e8e8e8;
-
-      .full-width-section {
-        .container {
-          @include breakpoint(small) {
-            padding: rem-calc(50 25 0) !important;
-          }
-          @include breakpoint(large) {
-            display: flex;
-            align-items: center;
-            padding: 0 !important;
-          }
-
-          div.first {
-            margin: auto;
-            @include breakpoint(small) {
-                max-width: 100%;
-            }
-            @include breakpoint(large) {
-                max-width: 50%;
-                width: auto;
-            }
-
-            h3 {
-              margin-bottom: rem-calc(20);
-              display: block;
-            }
-
-            img {
-              max-width: rem-calc(200);
-              margin-top: rem-calc(15);
-              display: block;
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-
-    &.ipad-landscape-or-portrait {
-      &.full-width.no-padding {
-        padding-bottom: rem-calc(50) !important;
-      }
-
-      p {
-        padding: 0 !important;
-      }
-
-      .full-width-section {
-        .container {
-          display: flex;
-          align-items: center;
-        }
-
-      }
-
-    }
-
-    &.ifd-app-compatibility {
-      .full-width-section {
-        .container {
-
-          @include breakpoint(small) {
-            display: block;
-          }
-          @include breakpoint(med-larg) {
-            display: flex;
-            vertical-align: bottom;
-          }
-
-          .flex_column {
-            vertical-align: bottom;
-
-            h3 {
-              margin-bottom: rem-calc(30);
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-
-    &.sim-try-before-buy {
-      img {
-        margin-top: 0 !important;
-      }
-
-    }
-
-    #ifd-compatibility {
-
-      @include breakpoint(small) {
-        display: block !important;
-      }
-      @include breakpoint(med-larg) {
-        display: flex;
-        align-items: center;
-      }
-
-      .ifd-product {
-        img {
-          display: block;
-          max-width: 100%;
-          width: 100%;
-          margin: auto;
-          padding: rem-calc(0 15);
-        }
-
-        strong {
-          display: block;
-          text-align: center;
-          margin: rem-calc(5 0 20);
-          font-weight: $global-weight-light;
-        }
-
-        a {
-          @include white-hollow-btn($avidyne-teal, #FFF, "");
-          display: table;
-          margin: auto;
-        }
-
-        @include breakpoint(small) {
-          margin-bottom: rem-calc(20);
-        }
-        @include breakpoint(med-larg) {
-          margin: auto;
-        }
-
-      }
-
+    .avidyne-teal {
+      @include white-hollow-btn($avidyne-teal, #FFF, "");
+      margin: rem-calc(10) auto;
+      border-width: 1px;
+      font-size: rem-calc(16);
     }
 
   }
 
-  &#product-overview-section-0 {
-    padding: rem-calc(0 15 75 15);
-  }
-
-  &#product-overview-section-2,
-  &#product-overview-section-4 {
-    // margin: rem-calc(50) auto rem-calc(100);
-    margin: 0;
-    padding: rem-calc(75 15);
-
-    .full-width-section {
-      position: relative;
-      width: 100%;
-      left: 0;
-      right: 0;
-
-      .container {
-        padding: 0;
-
-        p {
-          font-size: rem-calc(19) !important;
-
-          &:last-child {
-            margin: 0;
-          }
-
-          a {
-            margin-top: rem-calc(25);
-            display: table;
-            clear: both;
-            @include white-hollow-btn($avidyne-teal, #FFF, "");
-          }
-
-        }
-
-      }
-
-    }
-
-    img {
-      margin-top: rem-calc(35);
-    }
-
-  }
-
-  &#product-overview-section-2 {
-    img {
-      margin-top: rem-calc(60);
-    }
-
-  }
-
-  &.product-overall-comparison-chart,
-  &.product-duo-comparison-chart {
-
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f0f0f0+100&0+0,0.65+100 */
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(240, 240, 240, 0.65) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6f0f0f0', GradientType=0) !important; /* IE6-9 */
-    padding: rem-calc(0 0 150);
-    border-bottom: 1px solid #e8e8e8;
-  }
-
-  &.product-duo-comparison-chart {
-    padding: rem-calc(100 0 50);
-
-    h3 + p {
-      @include breakpoint(small) {
-          padding: rem-calc(0 20);
-      }
-      @include breakpoint(large) {
-          padding: rem-calc(0 10);
-      }
-    }
-
-    .condition {
-      font-size: rem-calc(20);
-      color: $satan-gray;
-      
-      font-weight: $global-weight-light;
-      @include breakpoint(small) {
-        padding: 0;
-      }
-      @include breakpoint(med-larg) {
-        padding: rem-calc(100 0 50);
-      }
-    }
-
-    .gw-go-header {
-      strong {
-        font-weight: $global-weight-light;
-        display: block;
-        font-size: rem-calc(16);
-      }
-
-      span.comparison-price {
-        font-size: rem-calc(30);
-        color: $black;
-        display: block;
-        margin: rem-calc(30) auto;
-        color: $satan-gray;
-      }
-
-    }
-
-    h3,
-    h4 {
-      text-align: center;
-    }
-
-    h3 {
-    }
-
-    h4 {
-      font-size: rem-calc(30);
-
-      &.avidyne-green {
-        color: $avidyne-green;
-      }
-
-      & + p {
-        text-align: center;
-      }
-
-    }
-
-    p {
-      font-size: rem-calc(20);
-    }
-
-  }
-
-  .general-section-wrapper,
-  &.general-section-wrapper {
-    margin-top: rem-calc(100);
-    padding: 0;
-
-    .container {
-      padding: 0 !important;
-    }
-
-    &.gray-gradient {
-
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f0f0f0+100&0+0,0.65+100 */
-      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* FF3.6-15 */
-      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(240, 240, 240, 0.65) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6f0f0f0', GradientType=0) !important; /* IE6-9 */
-    }
-
-  }
-
-}
-
-.page-template-page-vertical {
-  h2.av-special-heading-tag {
-    font-size: rem-calc(32);
-  }
-
-  .inner-border-av-border-fat,
-  .inner-border-av-border-thin {
-    margin-top: rem-calc(25);
-    margin-bottom: rem-calc(50);
-    border-top-width: 3px !important;
-  }
-
-  p {
-    font-size: rem-calc(20);
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: rem-calc(45);
-    max-width: 100%;
-    width: 100%;
-  }
-
-  #header-area {
-    #page-main-title {
-      text-align: left;
-
-      span {
-        @include breakpoint(small) { // 0+
-          font-size: rem-calc(20);
-        }
-        @include breakpoint(medium) { // 640
-
-        }
-        @include breakpoint(large) { // 1024
-          font-size: rem-calc(36);
-          br {
-            display: inline-block;
-          }
-        }
-        @include breakpoint(xlarge) { // 1200
-
-        }
-        @include breakpoint(xxlarge) { // 1440
-
-        }
-      }
-
-    }
-
-  }
-
-  #wrap_all {
-    .full-width {
-      &.no-padding {
-        p {
-          padding: 0 !important;
-        }
-
-        &.padding-bottom {
-          padding: rem-calc(0 0 50) !important;
-        }
-
-      }
-
-      &.no-paragraph-padding {
-        p {
-          margin: 0 !important;
-          color: $avidyne-content-color !important;
-        }
-
-        img {
-          display: block;
-          //margin-top: rem-calc(-40);
-          max-width: rem-calc(100);
-          margin: auto;
-        }
-
-        .av_four_fifth {
-          margin-left: 1%;
-        }
-
-      }
-
-    }
-
-    .no-padding {
-      padding: 0 !important;
-
-      p {
-        padding: 0 !important;
-        color: $avidyne-content-color !important;
-      }
-
-      &.padding-bottom {
-        padding-bottom: rem-calc(50) !important;
-      }
-
-    }
-
-  }
-
-  .product-overview-section {
-    // padding: 0 !important;
-
-    &#product-overview-section-2 {
-      img {
-        margin-top: 0 !important;
-      }
-
-    }
-
-  }
-
-  div[id*="after_section"] {
-    width: 100% !important;
-    border: 0 !important;
-    padding: 0 !important;
-
-    .product-overview-section {
-      padding: rem-calc(100 0) !important;
-    }
-
-    .ifd-ipad-app {
-      &.product-overview-section {
-        padding: rem-calc(100 0) !important;
-        @include breakpoint(small) {
-         padding: rem-calc(100 20) !important;
-        }
-        @include breakpoint(med-larg) {
-          padding: rem-calc(100 0) !important;
-        }
-      }
-    }
-
-    & > .container,
-    .content {
-      width: 100% !important;
-      border: 0 !important;
-      padding: 0 !important;
-      max-width: 100% !important;
-
-      p {
-        margin: 0;
-        color: $avidyne-content-color;
-      }
-
-      a.avidyne-teal {
-        @include white-hollow-btn($avidyne-teal, #FFF, "");
-        display: table;
-        margin: rem-calc(15) 0 0;
-        font-size: rem-calc(16);
-      }
-
-    }
-
-  }
-
-  .ifd-for-helicopters,
-  .ifd-for-cp {
-    h4 {
-      color: $satan-gray;
-      font-weight: $global-weight-extra-bold;
-      font-size: rem-calc(22);
-      line-height: 1.2;
-    }
-
-    p {
-      font-size: rem-calc(20);
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-      margin-bottom: rem-calc(45);
-      max-width: 100%;
-      width: 100%;
-    }
-
-    img {
-      max-width: rem-calc(150);
-      display: block;
-      margin: auto;
-      width: 100%;
-    }
-
-    .av_four_fifth {
-      margin-left: 2%;
-    }
-
-  }
-
-  .avia-bg-style-scroll {
-    background-size: 100% !important;
-  }
-
-  .commercial-jet {
-    padding-bottom: rem-calc(100) !important;
-
-    .ifd-for-cp {
-      margin-bottom: rem-calc(20);
-
-      @include breakpoint(small) { // 0+
-        display: inline-block;
-        width: auto;
-        .av_four_fifth {
-          max-width: 80%;
-        }
-      }
-      @include breakpoint(large) { // 1024
-        display: flex;
-        align-items: center;
-        width: 100%;
-        .av_four_fifth {
-          max-width: 100%;
-        }
-      }
-
-      p {
-        color: $avidyne-content-color;
-        margin-bottom: 0 !important;
-        line-height: 1.3;
-      }
-
-      img {
-        max-width: rem-calc(65);
-      }
-
-      .flex_column {
-        @include breakpoint(small) { // 0+
-          display: inline-block;
-          width: fit-content !important;
-          float: left;
-        }
-        @include breakpoint(large) { // 1024
-          // width: 100% !important;
-          br {
-            display: inline-block;
-          }
-        }
-      }
-
-    }
-
-  }
-
-}
-
-.page-id-6220 {
-  .ifd-for-helicopter {
-    &:nth-child(4) {
-      clear: left;
-    }
-    @include breakpoint(small) {
-      width: 100%;
-    }
-    @include breakpoint(med-larg) {
-      width: 48%;
-      float: left;
-      margin-right: 2%;
-    }
-  }
 }
 
 .tab_content {
@@ -3224,829 +1499,13 @@ body.search {
   overflow: hidden !important;
 }
 
-.ifd-for-helicopters-heading {
-  color: $avidyne-blue !important;
-  font-size: rem-calc(28);
-  margin: rem-calc(60 0 50);
-  font-weight: $global-weight-bold;
-}
-
-.ifd-for-helicopters-full-width-image {
-  .template-page {
-    width: 100% !important;
-    border: 0 !important;
-    @include breakpoint(small) { // 0+
-      padding: rem-calc(0) !important;
-    }
-    @include breakpoint(medium) { // 640
-
-    }
-    @include breakpoint(large) { // 1024
-      padding: rem-calc(200 0) !important;
-    }
-    @include breakpoint(xlarge) { // 1200
-
-    }
-    @include breakpoint(xxlarge) { // 1440
-
-    }
-  }
-
-}
-
 #product-gallery {
   .slick-prev,
   .slick-next {
     &:before {
       color: $black;
-      font-family: FontAwesome !important;
     }
 
-  }
-
-  .slick-prev {
-    text-align: right;
   }
 
 }
-
-#related-products {
-  .slick-slide {
-    min-height: rem-calc(200) !important;
-  }
-
-}
-
-.skytrax-series {
-  @include breakpoint(small) {
-      padding: rem-calc(50 25);
-  }
-  @include breakpoint(med-larg) {
-     padding: rem-calc(75 15);
-  }
-}
-
-.no-margin-right {
-  .av_four_fifth {
-    margin-left: 0 !important;
-  }
-
-}
-
-.container_wrap {
-  border: 0 !important;
-  top: 0 !important;
-}
-
-.product-specification {
-  margin-bottom: rem-calc(25);
-
-  strong {
-    font-size: rem-calc(18);
-    color: $satan-gray;
-  }
-
-}
-
-.avidyne-green {
-    @include white-hollow-btn($avidyne-green, #FFF, "");
-    display: table;
-    margin: rem-calc(20) auto 0;
-    border-width: 1px;
-    font-size: rem-calc(16);
-}
-
-.avidyne-teal {
-  @include white-hollow-btn($avidyne-teal, #FFF, "");
-  display: table;
-  margin: rem-calc(20) auto 0;
-  border-width: 1px;
-  font-size: rem-calc(16);
-}
-
-body.page-template-page-dealer-portal {
-  #wrap_all {
-    #header, .header_bg, #header_main {
-      position: relative !important;
-      background: $black;
-    }
-
-    #page-main-title {
-      padding: 10% 0;
-    }
-
-    .paginationjs .paginationjs-pages li {
-      margin-left: 0 !important;
-    }
-
-    .wpgmza-modern-marker-listing li.active {
-      padding: 0 !important;
-    }
-
-    .paginationjs .paginationjs-pages li.active>a {
-        height: 43px;
-        line-height: 43px;
-    }
-
-    .wpgmza-modern-marker-listing [data-name="address"] {
-      display: none !important;
-    }
-
-    .wpgmza_infowindow_title {
-      font-weight: $global-weight-bold;
-      margin-bottom: rem-calc(5);
-      line-height: 1.2;
-    }
-
-    #main {
-      padding: 0 !important;
-      position: relative;
-
-      .container_wrap {
-        max-width: 100% !important;
-      }
-
-      main {
-        padding: 0 !important;
-      }
-
-    }
-
-    #footer {
-      // position: fixed;
-      // bottom: 0;
-      // top: auto !important;
-      // width: 100%;
-
-      .container {
-        // overflow: hidden;
-      }
-
-      @include breakpoint(small) {
-      }
-
-      @include breakpoint(medium) {
-        // max-height: rem-calc(306);
-      }
-
-      @include breakpoint(large) {
-      }
-
-    }
-
-  }
-  .dealer-locator-reset {
-    position: absolute;
-    right: 5%;
-    top: 5%;
-    background-color: $avidyne-teal;
-    color: $white;
-    width: rem-calc(150);
-    height: rem-calc(50);
-    text-align: center;
-    display: block;
-    padding: rem-calc(15 0);
-    font-size: rem-calc(16);
-    i {
-      &::before {
-        margin-right: rem-calc(5);
-      }
-    }
-    span {
-      font-family: "Maven Pro", sans-serif;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .wpgmza_cat_checkbox_holder {
-      bottom: 18px;
-      left: 0;
-      right: 0;
-      max-height: 100vh !important;
-      @include breakpoint(small) {
-        position: static !important;
-      }
-      @include breakpoint(med-larg) {
-        position: absolute !important;
-      }
-  }
-  .wpgmza-modern-store-locator .wpgmza_cat_ul {
-    background: transparent !important;
-  }
-  .wpgmza-modern-store-locator {
-    width: 100%;
-    position: absolute !important;
-    max-width: rem-calc(900) !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0;
-    margin: auto !important;
-    padding: 0 !important;
-    background: rgba($black, .75) !important;
-    @include clearfix;
-    @include breakpoint(small) {
-      max-height: rem-calc(410);
-    }
-    @include breakpoint(med-larg) {
-      max-height: rem-calc(250);
-    }
-
-    & > .wpgmza-inner {
-      max-width: rem-calc(600) !important;
-      background: transparent !important;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      @include breakpoint(small) {
-        padding: rem-calc(145) 0 rem-calc(10) !important;
-      }
-      @include breakpoint(med-larg) {
-        padding: rem-calc(145) 0 !important;
-      }
-      &::before {
-        content: '';
-        background-image: url('https://www.mtninc.net/avidyne/wp-content/uploads/2019/04/map-pin-dealer.png');
-        background-size: rem-calc(40 56);
-        width: rem-calc(40) !important;
-        height: rem-calc(56) !important;
-        text-align: center;
-        margin: auto;
-        position: absolute;
-        top: rem-calc(55);
-        left: 0;
-        right: 0;
-      }
-      @include clearfix;
-      input, select, .wpgmza-use-my-location, .wpgmza_sl_search_button, .wpgmza_sl_reset_button_div, .wpgmza_store_locator_options_button {
-        border-radius: 0 !important;
-        margin: 0 !important;
-      }
-      input, select {
-        width: 100%;
-        @include breakpoint(small) {
-          margin: auto auto rem-calc(15) !important;
-          max-width: 100% !important;
-        }
-        @include breakpoint(med-larg) {
-          margin: auto !important;
-        }
-      }
-      // #radiusSelect_1,
-      .wpgmza-use-my-location,
-      .wpgmza_store_locator_options_button {
-        display: none;
-      }
-      .wpgmza_sl_search_button,
-      .wpgmza_sl_reset_button_div {
-        padding: rem-calc(6 4.5);
-      }
-      input, select {
-        height: rem-calc(40) !important;
-        font-size: rem-calc(18) !important;
-        color: #777 !important;
-        text-align: left;
-      }
-      ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        color: $satan-gray;
-        font-size: rem-calc(18);
-      }
-      ::-moz-placeholder { /* Firefox 19+ */
-        color: $satan-gray;
-        font-size: rem-calc(18);
-      }
-      :-ms-input-placeholder { /* IE 10+ */
-        color: $satan-gray;
-        font-size: rem-calc(18);
-      }
-      :-moz-placeholder { /* Firefox 18- */
-        color: $satan-gray;
-        font-size: rem-calc(18);
-      }
-      select {
-        width: 100%;
-        max-width: rem-calc(200);
-      }
-      .wpgmza_sl_search_button,
-      .wpgmza_sl_reset_button_div {
-        background: $avidyne-teal;
-        color: $white;
-        @include breakpoint(small) {
-          width: 100%;
-          display: block;
-        }
-        @include breakpoint(med-larg) {
-          width: rem-calc(100);
-        }
-      }
-      .wpgmza-use-my-location {
-        background: $avidyne-teal;
-        width: auto !important;
-        height: auto !important;
-        min-height: rem-calc(28);
-        top: 0 !important;
-        margin-right: rem-calc(15) !important;
-        &:hover {
-          cursor: pointer;
-        }
-        i {
-          color: $white;
-          &::before {
-            padding: rem-calc(14 10);
-          }
-        }
-      }
-      @include breakpoint(small) {
-        display: block !important;
-      }
-      @include breakpoint(med-larg) {
-        display: flex !important;
-      }
-    }
-    .wpgmza_cat_checkbox_holder {
-      border: 0;
-      box-shadow: none;
-      &::after {
-        content: 'When searching dealer name, please enter your desired location';
-        display: block;
-        text-align: center;
-        color: $white;
-      }
-      ul {
-        padding: 0;
-        margin: 0;
-        text-align: center;
-        li {
-          margin-bottom: 0 !important;
-          padding: 0;
-          line-height: 1.5;
-        }
-      }
-      label {
-        margin: 0;
-        padding: 0;
-        background: transparent;
-        border-radius: 0;
-        font-weight: $global-weight-normal !important;
-        font-size: rem-calc(14) !important;
-        border: 0 !important;
-        line-height: 1;
-        display: inline-block !important;
-        color: $white;
-      }
-      input {
-        vertical-align: middle;
-        margin-right: rem-calc(10);
-        height: rem-calc(22) !important;
-      }
-    }
-  }
-
-}
-
-.gray-gradient {
-
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f0f0f0+100&0+0,0.65+100 */
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(240, 240, 240, 0.65) 100%) !important; /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(240, 240, 240, 0.65) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6f0f0f0', GradientType=0) !important; /* IE6-9 */
-}
-
-.archive,
-.page-template-page-news-events {
-  #latest-news-section {
-    .av_three_fifth {
-      border: 1px solid #EEE;
-      border-left: 0;
-      margin-left: 0;
-      padding: rem-calc(30);
-    }
-
-    .flex_column {
-      min-height: rem-calc(300);
-    }
-
-    .flex_cell {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    .image-container {
-      &.fallback-image {
-        img {
-          width: 100%;
-          display: block;
-          height: 100%;
-          max-height: rem-calc(300);
-          padding: rem-calc(125 25);
-          background-color: #f5f2f2;
-        }
-      }
-      &.custom-image {
-        min-height: rem-calc(298);
-        overflow: hidden;
-        position: relative;
-        width: auto !important;
-        img {
-          padding: 0;
-          display: block;
-          position: absolute;
-          max-width: rem-calc(600) !important;
-          width: auto !important;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          margin: auto;
-        }
-      }
-
-    }
-
-    .item-content {
-      p {
-        font-size: rem-calc(15);
-      }
-
-      a {
-        strong {
-          font-size: rem-calc(20);
-          line-height: 1.3;
-          color: $black;
-          font-weight: $global-weight-medium;
-        }
-
-        &.read-more {
-          @include white-hollow-btn($avidyne-teal, #FFF, "");
-          clear: both;
-          float: right;
-          font-size: rem-calc(18);
-          margin-top: rem-calc(20);
-          padding-top: rem-calc(5) !important;
-          padding-bottom: rem-calc(5) !important;
-        }
-
-      }
-
-      .date {
-        font-size: rem-calc(15);
-        line-height: 1.3;
-        font-style: italic;
-        margin: rem-calc(5 0);
-      }
-
-    }
-
-  }
-
-  #latest-events-section {
-    margin: rem-calc(75) auto 0;
-    padding-bottom: rem-calc(75);
-
-    & > h2 {
-      text-align: center;
-      margin-bottom: rem-calc(25);
-    }
-
-    .event-start-date {
-      position: absolute;
-      left: 0;
-      top: 23%;
-      background: #006b76; /* Old browsers */
-      background: -moz-linear-gradient(left, rgba(0,107,118,0.8) 0%, rgba(0,143,157,0.8) 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(left, rgba(0,107,118,0.8) 0%, rgba(0,143,157,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to right, rgba(0,107,118,0.8) 0%, rgba(0,143,157,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006b76', endColorstr='#008f9d',GradientType=1 ); /* IE6-9 */
-      text-align: center;
-      color: $white;
-      z-index: 9999;
-      padding: rem-calc(20);
-      font-size: rem-calc(24);
-      font-weight: $global-weight-bold;
-      line-height: 1;
-      min-width: rem-calc(125);
-      div {
-        font-size: rem-calc(20);
-        font-weight: $global-weight-normal;
-      }
-    }
-
-    .item {
-      // padding-left: 0 !important;
-      background-color: $white;
-      border: 1px solid #EEE;
-
-      .image-container {
-        height: rem-calc(150);
-        overflow: hidden;
-
-        &.custom-image {
-          position: relative;
-          width: rem-calc(100);
-          height: rem-calc(100);
-          overflow: hidden;
-          display: block;
-          img {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            display: block;
-            max-width: rem-calc(200);
-            width: rem-calc(200);
-            height: auto;
-          }
-        }
-
-        div {
-          position: relative;
-          width: 100%;
-          height: rem-calc(150);
-          margin: auto;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-          overflow: hidden;
-        }
-
-        img {
-          display: block;
-          margin: auto;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-        }
-
-      }
-
-      .item-content {
-        position: relative;
-        top: rem-calc(0);
-
-        p {
-          font-size: rem-calc(14);
-          line-height: 1.3;
-          margin: rem-calc(15 0 0);
-        }
-
-        a {
-          display: block;
-
-          strong {
-            text-align: center;
-            display: block;
-            color: black;
-            font-weight: $global-weight-bold;
-            font-size: rem-calc(18);
-            margin: rem-calc(10 0 0);
-          }
-
-          &.avidyne-teal {
-            @include white-hollow-btn($avidyne-teal, #FFF, "");
-            display: table;
-            margin: auto;
-            font-size: rem-calc(16);
-            padding: rem-calc(5 30) !important;
-            clear: both;
-            float: none;
-          }
-
-        }
-
-        .location {
-          text-align: center;
-          display: block;
-          color: $black;
-          font-size: rem-calc(16);
-        }
-
-      }
-
-    }
-
-    .view-all {
-      @include white-hollow-btn($avidyne-green, #FFF, "");
-      display: table;
-      margin: rem-calc(25) auto 0;
-    }
-
-  }
-
-  .avidyne-green {
-    @include white-hollow-btn($avidyne-green, #FFF, "");
-    clear: both;
-    font-size: rem-calc(18);
-    margin-top: rem-calc(20);
-    padding-top: rem-calc(5) !important;
-    padding-bottom: rem-calc(5) !important;
-  }
-
-  .pagination {
-    padding-left: 0;
-    padding-right: 0;
-    .disabled {
-      padding: 0;
-    }
-    a {
-      font-size: rem-calc(18);
-    }
-    .pagination-item-current {
-      background: $avidyne-green;
-      color: $white;
-    }
-    .pagination-next,
-    .pagination-previous  {
-      a {
-        &::before {
-          margin: auto;
-          font-size: rem-calc(18);
-        }
-      }
-    }
-
-    .pagination-previous {
-      &::before {
-        content: '';
-        display: none;
-      }
-    }
-    .pagination-next {
-      &::after {
-        content: '';
-        display: none;
-      }
-    }
-  }
-
-}
-
-#latest-news-section {
-  .image-container {
-    height: rem-calc(150);
-    overflow: hidden;
-
-    img {
-      width: 100%;
-    }
-
-    &.custom-image {
-      position: relative;
-      overflow: hidden;
-      display: block;
-      img {
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: block;
-        height: auto;
-        @include breakpoint(small) {
-          position: relative;
-          max-width: 100% !important;
-          width: 100% !important;
-        }
-        @include breakpoint(large) {
-          position: absolute;
-          max-width: rem-calc(150) !important;
-          width: rem-calc(150) !important
-        }
-      }
-      @include breakpoint(small) {
-          width: 100%;
-          height: auto;
-          margin: auto auto rem-calc(30);
-        }
-        @include breakpoint(large) {
-          width: rem-calc(100);
-          height: rem-calc(100);
-          margin: auto;
-        }
-    }
-  }
-}
-
-.home #latest-news-section .avidyne-event {
-  .image-container {
-    height: auto;
-    min-height: rem-calc(100);
-    overflow: hidden;
-  }
-}
-
-#top.page.page-id-16 {
-  .entry-content-wrapper {
-    max-width: rem-calc(1310);
-    margin: auto;
-  }
-}
-
-#top.page.page-id-6122 {
-  h2 {
-    color: $avidyne-blue;
-    font-weight: $global-weight-normal;
-  }
-  h4 {
-    color: $satan-gray;
-    font-size: rem-calc(22);
-    font-weight: $global-weight-medium;
-  }
-  #careers {
-    margin: rem-calc(50 0);
-    .career-listing {
-      .container.clearfix {
-        max-width: $global-width !important;
-        margin: auto;
-        border: 1px solid #EEE;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 0;
-        padding: rem-calc(20 0) !important;
-      }
-      h3 {
-        font-size: rem-calc(22);
-        color: $avidyne-teal;
-      }
-      .listing-department,
-      .listing-location {
-        display: inline-block;
-        color: $satan-gray;
-        font-size: rem-calc(17);
-      }
-      .listing-department {
-        margin-right: rem-calc(15);
-      }
-    }
-  }
-}
-
-.portrait-ipad {
-
-}
-
-.landscape-ipad {
-  display: none;
-}
-
-.page-id-3,
-.page-id-6576 {
-  .entry-content {
-    padding-bottom: rem-calc(50);
-    h2 {
-      color: $satan-gray;
-    }
-    a {
-      color: $avidyne-green !important;
-      font-weight: $global-weight-medium;
-    }
-    strong {
-      color: $satan-gray;
-    }
-    ul {
-      list-style: none;
-      li {
-        margin-left: rem-calc(20);
-      }
-    }
-  }
-}
-
-.wpgmza-modern-store-locator .wpgmza_cat_ul > li > input:checked + label {
-  background: transparent !important;
-}
-
-.about-quote {
-  max-width: 100% !important;
-}
-
-.blue-arrow-button {
-  @include white-hollow-btn($avidyne-blue, $white, "\f061");
-  font-size: rem-calc(18);
-}
-
-@include breakpoint(med-larg) {
-  .four-fourty-ba-vertical-padding {
-    padding-top: rem-calc(110);
-  }
-
-  .five-fourty-ba-vertical-padding {
-    padding-top: rem-calc(28);
-  }
-
-  .five-fourty-heli-vertical-padding {
-    padding-top: 0;
-  }
-
-  .four-fourty-heli-vertical-padding {
-    padding-top: rem-calc(92);
-  }
-}
-

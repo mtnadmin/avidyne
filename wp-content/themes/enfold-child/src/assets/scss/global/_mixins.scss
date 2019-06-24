@@ -1,7 +1,7 @@
 @mixin white-hollow-btn($hex, $color, $arrow:"") {
-  padding: rem-calc(10 30) !important;
-  color: $hex !important;
-  border-color: $hex !important;
+  padding: rem-calc(10 30);
+  color: $hex;
+  border-color: $hex;
   border-width: rem-calc(2);
   border-style: solid;
   background: transparent;
@@ -20,7 +20,7 @@
   }
   &:hover {
     background: $hex;
-    color: $color !important;
+    color: $color;
     border-color:  $hex;
     transition: all 250ms ease-in-out;
     cursor: pointer;

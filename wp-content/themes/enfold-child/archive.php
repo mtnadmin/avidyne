@@ -19,80 +19,82 @@
 	 	{
 			echo avia_title(array('title' => avia_which_archive()));
 		}
-		
+
 		do_action( 'ava_after_main_title' );
 	?>
     <?php echo do_shortcode("[avidyne-fallback-header]");?>
-		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
+		<div class='container_wrap container_wrap_first main_color full-width <?php avia_layout_class( 'main' ); ?>'>
 
 			<div class='container template-blog '>
 
-				<main class='content <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'post'));?>>
-					
-					<?php 
-						
-						$tds =  term_description(); 
-						if($tds)
-						{
-							echo "<div class='category-term-description'>{$tds}</div>";
-						}
-					?>
-                    
+				<main class='content' style="border:0;">
 
-                    <?php
-                    $avia_config['blog_style'] = apply_filters('avf_blog_style', avia_get_option('blog_style','multi-big'), 'archive');
-                    if($avia_config['blog_style'] == 'blog-grid')
-                    {
-                        global $posts;
-                        $post_ids = array();
-                        foreach($posts as $post) $post_ids[] = $post->ID;
-
-                        if(!empty($post_ids))
-                        {
-                            $atts   = array(
-                                'type' => 'grid',
-                                'items' => get_option('posts_per_page'),
-                                'columns' => 3,
-                                'class' => 'avia-builder-el-no-sibling',
-                                'paginate' => 'yes',
-                                'use_main_query_pagination' => 'yes',
-                                'custom_query' => array( 'post__in'=>$post_ids, 'post_type'=>get_post_types() )
-                            );
-
-                            $blog = new avia_post_slider($atts);
-                            $blog->query_entries();
-                            echo "<div class='entry-content-wrapper'>".$blog->html()."</div>";
+					<?php
+                    $vars = get_queried_object();
+                    $posts = get_posts(array(
+                            'post_type' => 'post',
+                            'numberposts' => 5,
+                            'order' => 'DESC',
+                            'orderby' => 'date',
+                            'paged'   => $paged,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'category',
+                                    'field'    => 'slug',
+                                    'terms'    => $vars->slug,
+                                ),
+                            )
+                        ));
+                    foreach($posts as $post) : setup_postdata($post);
+                        $date = get_the_date('F jS, Y', $post);
+                        $permalink = get_the_permalink($post->ID);
+                        $image = get_the_post_thumbnail_url($post, 'large');
+                        $excerpt = get_the_content($post);
+                        $excerpt = strip_tags($excerpt);
+                        $excerpt = substr($excerpt, 0, 150);
+                        $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+                        $excerpt = strip_tags($excerpt.'...');
+                        $title = $post->post_title;
+                        $title = strip_tags($title);
+                        $title = substr($title, 0, 100);
+                        $title = substr($title, 0, strripos($title, " "));
+                        $title = $title . '...';
+                        $image_class = 'custom-image';
+                        if (!$image) {
+                            $image_class = 'fallback-image';
+                            $image = get_bloginfo('url') . '/wp-content/uploads/2018/12/Avidyne-logo-green-2017.png';
                         }
-                        else
-                        {
-                            get_template_part( 'includes/loop', 'index' );
-                        }
-                    }
-                    else
-                    {
-                        /* Run the loop to output the posts.
-                        * If you want to overload this in a child theme then include a file
-                        * called loop-index.php and that will be used instead.
-                        */
-
-                        $more = 0;
-                        get_template_part( 'includes/loop', 'index' );
-                    }
-                    ?>
-
-				<!--end content-->
+                        $events .= '
+                            <div>
+                                <div class="av-layout-grid-container entry-content-wrapper av-flex-cells container_wrap fullsize">
+                                    <div class="item flex_cell no_margin content-wrapper" data-equalizer>
+                                    [av_two_fifth first min_height="" vertical_alignment="" space="" custom_margin="" margin=""0px"" row_boxshadow="" row_boxshadow_color="" row_boxshadow_width=""10"" link="" linktarget="" link_hover="" padding=""0px"" highlight="" highlight_size="" border="" border_color="" radius=""0px"" column_boxshadow="" column_boxshadow_color="" column_boxshadow_width=""10"" background=""bg_color"" background_color="" background_gradient_color1="" background_gradient_color2="" background_gradient_direction=""vertical"" src="" background_position=""top left"" background_repeat=""no-repeat"" animation="" mobile_breaking="" mobile_display="" av_uid=""]
+                                            <div class="image-container '. $image_class .'" data-equalizer-watch>
+                                                <img src="'. $image .'" alt="">
+                                            </div>
+                                        [/av_two_fifth]
+                                        [av_three_fifth min_height="" vertical_alignment="" space="" custom_margin="" margin=""0px"" row_boxshadow="" row_boxshadow_color="" row_boxshadow_width=""10"" link="" linktarget="" link_hover="" padding=""0px"" highlight="" highlight_size="" border="" border_color="" radius=""0px"" column_boxshadow="" column_boxshadow_color="" column_boxshadow_width=""10"" background=""bg_color"" background_color="" background_gradient_color1="" background_gradient_color2="" background_gradient_direction=""vertical"" src="" background_position=""top left"" background_repeat=""no-repeat"" animation="" mobile_breaking="" mobile_display="" av_uid=""]
+                                            <div class="item-content clearfix" data-equalizer-watch><a href="'. $permalink .'"><strong>'. $title .'</strong></a><div class="date">'. $date .'</div>'. strip_tags($excerpt) .'<a href="'. $permalink .'" class="read-more avidyne-teal">Read more</a></div>
+                                        [/av_three_fifth]
+                                    </div>
+                                </div>
+                            </div>
+                        ';
+                    endforeach;
+                    wp_reset_query();
+                    echo do_shortcode('<div id="latest-news-section"><h2>Latest Media</h2><div class="row clearfix" data-equalizer>'. $events .'</div></div>'); avidyne_pagination(); ?>
 				</main>
 
 				<?php
 
 				//get the sidebar
-                if (avia_get_option('archive_sidebar') == 'archive_sidebar_separate') {
-                    $avia_config['currently_viewing'] = 'archive';
-                }
-                else {
-                    $avia_config['currently_viewing'] = 'blog';
-                }
-				get_sidebar();
+    //             if (avia_get_option('archive_sidebar') == 'archive_sidebar_separate') {
+    //                 $avia_config['currently_viewing'] = 'archive';
+    //             }
+    //             else {
+    //                 $avia_config['currently_viewing'] = 'blog';
+    //             }
+				// get_sidebar();
 
 				?>
 

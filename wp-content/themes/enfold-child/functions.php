@@ -27,6 +27,35 @@ if ( !function_exists('avidyne_admin_assets') ) {
     add_action( 'admin_enqueue_scripts', 'avidyne_admin_assets' );
 }
 
+if ( !function_exists('mobile_chart_filter') ) {
+    function mobile_chart_filter($args,$content,$name) {
+        return '
+            <div id="'. $name .'">
+                <div class="container">
+                    <div class="550">
+                        <button>IFD550</button>
+                    </div>
+                    <div class="545">
+                        <button>IFD545</button>
+                    </div>
+                    <div class="540">
+                        <button>IFD540</button>
+                    </div>
+                    <div class="510">
+                        <button>IFD510</button>
+                    </div>
+                    <div class="440">
+                        <button>IFD440</button>
+                    </div>
+                    <div class="410">
+                        <button>IFD410</button>
+                    </div>
+                </div>
+            </div>';
+        }
+        add_shortcode( 'mobile-chart-filter', 'mobile_chart_filter' );
+}
+
 if ( !function_exists('avidyne_careers') ) {
     function avidyne_careers() {
         $careers = get_posts(array(
@@ -67,7 +96,7 @@ if ( !function_exists('avidyne_localization_scripts') ) {
                 'taxonomy' => 'product_categories',
                 'hide_empty' => true,
                 'parent' => 0,
-                'exclude' => array(54,36,19)
+                'exclude' => array(54,36)
             )
         );
         // Setup terms and related products
@@ -135,14 +164,16 @@ if ( !function_exists('latest_news') ) {
             $title = substr($title, 0, 125);
             $title = substr($title, 0, strripos($title, " "));
             $title = $title.'...';
+            $image_class = 'custom-image';
             if (!$image) {
+                $image_class = 'fallback-image';
                 $image = get_stylesheet_directory_uri() . '/dist/assets/images/avidyne-logo-news-4x.png';
             }
             $feed .= '
                 <div>
                     <div class="av-layout-grid-container entry-content-wrapper av-flex-cells container_wrap fullsize">
                         <div class="item flex_cell no_margin content-wrapper">
-                            <div class="image-container">
+                            <div class="image-container '. $image_class .'">
                                 <img src="'. $image .'" alt="">
                             </div>
                             <div class="item-content">
@@ -169,8 +200,9 @@ if ( !function_exists('latest_events') ) {
     function latest_events() {
         $posts = get_posts(array(
             'post_type' => 'post',
-            'numberposts' => 10,
-            'orderby'  => array( 'meta_value_num' => 'ASC', 'title' => 'ASC' ),
+            'numberposts' => 20,
+            'order' => 'DESC',
+            'orderby'  => array( 'meta_value_num' => 'ASC', 'title' => 'DESC' ),
             'meta_key' => 'start_date',
             'tax_query' => array(
                 array(
@@ -184,15 +216,13 @@ if ( !function_exists('latest_events') ) {
         foreach($posts as $post) : setup_postdata($post);
             $source = get_field('start_date', $post->ID);
             $todays_date = new DateTime;
-            $todays_date = $todays_date->format('Ymj');
-
-            if ( $todays_date > $source ) {
+            $todays_date = $todays_date->format('Ymd');
+            if ( strtotime($todays_date) > strtotime($source) || $count > 3 ) {
                 continue;
             }
 
             $date = new DateTime($source);
             $date = $date->format('F j, Y');
-            // var_dump($date);
             $permalink = get_the_permalink($post->ID);
             $image = get_the_post_thumbnail_url($post, 'large');
             $excerpt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque nisi nec justo suscipit, eu lacinia enim pulvinar. Cras a maximus lectus. Vestibulum ut est a dui feugiat congue. Pellentesque eleifend nibh turpis, a dapibus velit volutpat et. Nunc consequat viverra ipsum, sit amet tempor lectus laoreet a.';
@@ -336,7 +366,7 @@ if ( !function_exists('avidyne_fallback_header') ) {
         $custom_image = $page_fields['product_header_image'];
         $custom_title = $page_fields['product_identifier'];
         $custom_title_description = $page_fields['product_header_title'];
-        $fallback_image = get_bloginfo('url') . '/wp-content/uploads/2018/12/banner-amx240-xxlarge.jpg';
+        $fallback_image = get_bloginfo('url') . '/wp-content/uploads/2019/03/promo-guarantee.jpg';
         $image = $custom_image ? $custom_image['url'] : $fallback_image;
         if ( $obj->name != '' ) {
             $page_title = $obj->name;
@@ -401,10 +431,12 @@ if ( !function_exists('avidyne_related_products') ) {
         ));
         foreach( $posts as $post ) :
             $image = get_the_post_thumbnail_url($post->ID, 'large');
+            $general_product_details = get_field( 'general_product_details', $post->ID );
             $solutions .= '
                 <li class="related-product">
                     <a href="'. get_the_permalink($post->ID) .'">
                         <img src="' . $image . '" alt="">
+                        <span>'. $general_product_details['product_identifier'] .'</span>
                     </a>
                 </li>
             ';
@@ -412,6 +444,68 @@ if ( !function_exists('avidyne_related_products') ) {
         return do_shortcode("[av_one_full first]<h5 id='related-products-title'>AVIDYNE SOLUTIONS</h5><div class='container'><ul id='related-products'>". $solutions ."</ul></div>[/av_one_full]");
     }
     add_shortcode('avidyne-related-products','avidyne_related_products');
+}
+
+if ( !function_exists('related_vertical_products') ) {
+    function related_vertical_products($args, $content=null, $name) {
+        global $post;
+        $ids = explode(',',$args['ids']);
+        $posts = get_posts(array(
+            'post_type' => 'product',
+            'numberposts' => -1,
+            'orderby'  => 'name',
+            'order' => 'ASC',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_categories',
+                    'field'    => 'term_id',
+                    'terms'    => $ids,
+                ),
+            ),
+        ));
+
+        $semi_relevant_posts = get_posts(array(
+            'post_type' => 'product',
+            'numberposts' => -1,
+            'orderby'  => 'name',
+            'order' => 'ASC',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_categories',
+                    'field'    => 'term_id',
+                    'terms'    => $ids,
+                    'operator' => 'NOT IN'
+                ),
+            ),
+        ));
+
+        foreach( $posts as $post ) :
+            $image = get_the_post_thumbnail_url($post->ID, 'large');
+            $general_product_details = get_field( 'general_product_details', $post->ID );
+            $solutions .= '
+                <li class="related-product highlight">
+                    <a href="'. get_the_permalink($post->ID) .'">
+                        <div style="position:relative;padding: 0 10px;"><img src="' . $image . '" alt=""><div class="compatible-product">Compatible Product</div><span>'. $general_product_details['product_identifier'] .'</span>
+                    </a>
+                </li>
+            ';
+        endforeach;
+
+        foreach( $semi_relevant_posts as $post ) :
+            $image = get_the_post_thumbnail_url($post->ID, 'large');
+            $general_product_details = get_field( 'general_product_details', $post->ID );
+            $solutions .= '
+                <li class="related-product">
+                    <a href="'. get_the_permalink($post->ID) .'">
+                       <div style="position:relative;padding: 0 10px;"><img src="' . $image . '" alt=""><span>'. $general_product_details['product_identifier'] .'</span></div>
+                    </a>
+                </li>
+            ';
+        endforeach;
+
+        return do_shortcode("[av_one_full first]<h5 id='related-products-title'>ALL AVIDYNE SOLUTIONS</h5><div class='container'><ul id='related-products'>". $solutions ."</ul></div>[/av_one_full]");
+    }
+    add_shortcode('related-vertical-products','related_vertical_products');
 }
 
 if ( !function_exists('avidyne_ifd_series_features') ) {
@@ -429,56 +523,6 @@ if ( !function_exists('avidyne_ifd_series_features') ) {
         ");
     }
     add_shortcode('ifd-series-features','avidyne_ifd_series_features');
-}
-
-
-if ( !function_exists('avidyne_megamenu_vertical') ) {
-    function avidyne_megamenu_vertical() {
-            // Products vertical menu
-            // <div class="vertical-menu-items">
-            //     <div class="container clearfix">
-            //         <ul>
-            //             <li class="general-aviation">
-            //                 <a href="#">General Aviation</a>
-            //             </li>
-            //             <li class="corporate-jets">
-            //                 <a href="#">Corporate Jet</a>
-            //             </li>
-            //             <li class="helicopters">
-            //                 <a href="#">Helicopter</a>
-            //             </li>
-            //         </ul>
-            //     </div>
-            // </div>
-            // View All Products - Products Mega Menu
-            // <div class="view-all-products-menu">
-            //     <div class="container">
-            //         <div class="content">
-            //             <div class="wrapper clearfix">
-            //                 <strong>Big Glass <br /> Solutions</strong>
-            //                 <p>Extend your IFD display with the IFD100 iPad App</p>
-            //                 <a href="#" class="avidyne-white">Learn More</a>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>
-            // <div class="for-customers">
-            //     <div class="wrapper clearfix">
-            //         <strong>Customer <br /> Support Center</strong>
-            //     </div>
-            // </div>
-            // <div class="dealer-portal-mega-menu">
-            //     <div class="content">
-            //         <div class="wrapper clearfix">
-            //             <strong>Avidyne <br /> Dealer Portal</strong>
-            //             <p>Product Documentation, Technical Support, Install Manuals, Submit RMAs</p>
-            //             <a href="#" class="avidyne-white">Visit</a>
-            //         </div>
-            //     </div>
-            // </div>
-            ?>
-        <?php // add_shortcode('avidyne-megamenu-verticals','avidyne_megamenu_vertical');
-    }
 }
 
 if ( !function_exists('avidyne_support_mega_menu') ) {
@@ -570,6 +614,86 @@ if ( !function_exists('avidyne_documentation') ) {
     }
     add_shortcode( 'avidyne-documentation', 'avidyne_documentation' );
 }
+
+if ( !function_exists('home_accordion_for_mobile') ) {
+    function home_accordion_for_mobile() {
+        return '
+            <div id="home-mobile-accordion-slider">
+                <div class="wrapper">
+                    <div class="mobile-accordion-slide general-aviation">
+                    <div class="wrapper">
+                        <h3 class="aviaccordion-title " itemprop="headline">General Aviation</h3>
+                        <div class="aviaccordion-excerpt " itemprop="text">
+                            <p>Avidyne avionics for General Aviation <br> are made by pilots, for pilots.  Easy to <br> use, simple to install with all the <br> features and benefits  you need to make <br> your mission safer and more enjoyable.</p>
+                            <p><a href="'. get_bloginfo('url') .'/premium-avionics-for-general-aviation/">Learn More</a></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mobile-accordion-slide corporate-jets">
+                        <div class="wrapper">
+                            <h3 class="aviaccordion-title " itemprop="headline">Corporate Jets</h3>
+                            <div class="aviaccordion-excerpt " itemprop="text">
+                                <p>An FMS/LPV/ADS-B solution that provides a better,<br> more affordable way to navigate the skies. Get SBAS/<br> LPV precision navigation designed to meet the <br> accuracy and integrity requirements for ADS-B.</p>
+                                <p><a href="'. get_bloginfo('url') .'/fms-adsb-system-for-corporate-jets/">Learn More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-accordion-slide helicopters">
+                        <div class="wrapper">
+                            <h3 class="aviaccordion-title " itemprop="headline">Helicopters</h3>
+                            <div class="aviaccordion-excerpt " itemprop="text">
+                                <p>The Avidyne IFD-Series of GPS navigators <br> for helicopters and fleets are direct slide-in replacements <br> of the GNS navigators.  More capabilities for less cost <br> and downtime.</p>
+                                <p><a href="'. get_bloginfo('url') .'/gps-navigators-for-helicopters/">Learn More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+        }
+        add_shortcode( 'home-accordion-for-mobile', 'home_accordion_for_mobile' );
+}
+
+
+
+if ( !function_exists('ifd_accordion_for_mobile') ) {
+    function ifd_accordion_for_mobile() {
+        return '
+            <div id="ifd-mobile-accordion-slider">
+                <div class="wrapper">
+                    <div class="mobile-accordion-slide money-back">
+                    <div class="wrapper">
+                        <h3 class="aviaccordion-title " itemprop="headline">Money Back Guarantee: <br /> Fly it for 30 days!</h3>
+                        <div class="aviaccordion-excerpt " itemprop="text">
+                            <p> Avidyne is so confident you will <br> love our IFD series product, we will<br> will let you try them for 30 days.*</p>
+                            <p><a href="'. get_bloginfo('url') .'/#">Learn More</a></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mobile-accordion-slide big-glass">
+                        <div class="wrapper">
+                            <h3 class="aviaccordion-title " itemprop="headline">IFD100 App: Big glass <br> for any aircraft</h3>
+                            <div class="aviaccordion-excerpt " itemprop="text">
+                                <p>Get big glass at a <br> fraction of the cost <br> Free with any IFD.</p>
+                                <p><a href="'. get_bloginfo('url') .'/#">Learn More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-accordion-slide better-together">
+                        <div class="wrapper">
+                            <h3 class="aviaccordion-title " itemprop="headline">IFD + NGT-9000 <br> Better Together</h3>
+                            <div class="aviaccordion-excerpt " itemprop="text">
+                                <p>Buy an IFD solution and <br> get the NGT-9000 ADS-B <br> transponder</p>
+                                <p><a href="'. get_bloginfo('url') .'/#">Learn More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+        }
+        add_shortcode( 'ifd-accordion-for-mobile', 'ifd_accordion_for_mobile' );
+}
+
+
 
 if ( !function_exists('single_product_avidyne_documentation') ) {
     function single_product_avidyne_documentation() {
@@ -687,4 +811,89 @@ if ( !function_exists('footer_social') ) {
         return "<div class='av-sidebar-social-container'>".$social."</div>";
     }
     add_shortcode( 'footer-social', 'footer_social' );
+}
+
+
+function avidyne_pagination() {
+
+    if( is_singular() )
+        return;
+
+    global $wp_query;
+
+    /** Stop execution if there's only 1 page */
+    if( $wp_query->max_num_pages <= 1 )
+        return;
+
+    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $max   = intval( $wp_query->max_num_pages );
+    $hash = '#to-content';
+
+    /** Add current page to the array */
+    if ( $paged >= 1 )
+        $links[] = $paged;
+
+    /** Add the pages around the current page to the array */
+    if ( $paged >= 3 ) {
+        $links[] = $paged - 1;
+        $links[] = $paged - 2;
+    }
+
+    if ( ( $paged + 2 ) <= $max ) {
+        $links[] = $paged + 2;
+        $links[] = $paged + 1;
+    }
+
+    echo '<div class="navigation"><ul class="pagination" aria-label="Pagination">';
+    $uri = '/case-studies/page/';
+    if ( in_array( 'blog', get_body_class() ) ) {
+        $uri = '/news/page/';
+    }
+    /** Previous Post Link */
+    $class = '';
+    $link = '<a href="' . get_bloginfo( 'url' ) . $uri . ( $paged - 1 ) .'/'. $hash .'"></a>';
+    if ( $paged === (int) 1 ) {
+        $class = ' disabled';
+        $link = '<a class="disabled"></a>';
+    }
+    printf( '<li class="pagination-previous %s">%s</li>', $class, $link );
+
+    /** Link to first page, plus ellipses if necessary */
+    if ( ! in_array( 1, $links ) ) {
+        $class = 1 == $paged ? ' class="pagination-item-current"' : ' class="paginated"';
+
+        printf( '<li%s><a href="%s'. $hash .'">%s</a></li>', $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+
+        if ( ! in_array( 2, $links ) )
+            echo '<li>…</li>';
+    }
+
+    /** Link to current page, plus 2 pages in either direction if necessary */
+    sort( $links );
+    foreach ( (array) $links as $link ) {
+        $class = $paged == $link ? ' class="pagination-item-current"' : '';
+        printf( '<li class="paginated"><a href="%s'. $hash .'" %s>%s</a></li>', esc_url( get_pagenum_link( $link ) ), $class, $link );
+    }
+
+    /** Link to last page, plus ellipses if necessary */
+    if ( ! in_array( $max, $links ) ) {
+        if ( ! in_array( $max - 1, $links ) )
+            echo '<li class="paginated">…</li>';
+
+        $class = $paged == $max ? ' class="pagination-item-current"' : ' class="paginated"';
+        printf( '<li%s><a href="%s'. $hash .'">%s</a></li>', $class, esc_url( get_pagenum_link( $max ) ), $max );
+    }
+
+     /** Next Post Link */
+    $class = '';
+    $link = '<a href="' . get_bloginfo( 'url' ) . $uri . ( $paged + 1 ) .  '/'. $hash .'"></a>';
+    if ( $paged === $max ) {
+        $class = $paged == $max ? ' disabled' : '';
+        $link = '<a class="disabled"></a>';
+    }
+
+    printf( '<li class="pagination-next %s">%s</li>', $class, $link  );
+
+    echo '</ul></div>';
+
 }

@@ -45,8 +45,7 @@
                                 ),
                             )
                         );
-                        // var_dump($docs);
-                        // echo '<br /><br />';
+
                         if ( !empty($docs) ) {
                             $current_doc = array();
                             foreach( $docs as $doc ) {
@@ -58,6 +57,8 @@
                                 $file_revision = get_field('file_revision',$doc->ID);
                                 $file_state = get_field('current_or_legacy',$doc->ID);
                                 $upload_date = get_the_date();
+                                // var_dump($docs);
+                                // echo '<br /><br />';
                                 if ( is_array($files) ) {
                                     foreach( $fileinfo as $id => $file ) {
                                         $dl_link = get_permalink($doc->ID);
@@ -95,13 +96,18 @@
                                     $file_type = substr($file['name'], strrpos($file['name'], '.' ) + 1);
                                     $file_type = strtoupper($file_type);
                                     $downloads .= "<a href='". $download_url ."' class='document-download'>Download ". $file_type ."</a>";
+                                    $image = get_the_post_thumbnail_url($file['pid']);
+                                    $image = $download_url;
+                                    $set_image_url = wp_get_attachment_image_src($file['id']);
+                                    // var_dump($set_image_url);
+                                    // echo 'This: ' . $filepath;
                                 }
                                 $toggle .= "
                                     <div class='support-document ". $download_state . " " . $term->slug . "'>
                                         <div class='document-wrapper'>
                                             <div class='avidyne-rows clearfix' data-equalizer>
                                                 <div class='row avidyne-12 avidyne-2 media-preview'>
-                                                    <a href='". $download_url ."'>
+                                                    <a href='". $image  ."' rel='lightbox'>
                                                         <div data-equalizer-watch><div><img src='". $download_url ."' alt='". $download_title ."'></div></div>
                                                     </a>
                                                 </div>

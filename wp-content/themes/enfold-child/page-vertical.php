@@ -148,7 +148,14 @@
 
                     echo '<div class="related-spacer clearfix"></div>';
 
-                    echo do_shortcode("[avidyne-related-products]");
+                    $body_classes = get_body_class();
+                    if ( in_array('page-id-3612', $body_classes) ) {
+                        echo do_shortcode("[related-vertical-products ids='23,30']");
+                    } else if ( in_array('page-id-6220', $body_classes) ) {
+                        echo do_shortcode("[related-vertical-products ids='30,29,27,25,26']");
+                    } else {
+                        echo do_shortcode("[related-vertical-products]");
+                    }
                 ?>
             </div><!--end container-->
 

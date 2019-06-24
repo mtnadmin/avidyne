@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import whatInput from 'what-input';
 import slick from 'slick-carousel';
-import magnificPopup from 'magnific-popup';
 
 window.$ = $;
 
@@ -12,7 +11,6 @@ $(document).foundation();
 
 (($) => {
     $(() => {
-
         console.log('All setup!');
         let productThumbs = $('#product-gallery'),
             productFeatured = $('#product-featured'),
@@ -62,73 +60,9 @@ $(document).foundation();
             dots: true,
             fade: false,
             prevArrow: '<i class="fa fa-chevron-left slick-prev"></i>',
-            nextArrow: '<i class="fa fa-chevron-right slick-next"></i>',
-            responsive: [
-                {
-                  breakpoint: 1200,
-                  settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
-                    infinite: true,
-                    dots: true
-                  }
-                },
-                {
-                  breakpoint: 1024,
-                  settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                  }
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                  }
-                },
-                {
-                  breakpoint: 480,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                  }
-                }
-              ]
-
+            nextArrow: '<i class="fa fa-chevron-right slick-next"></i>'
         });
 
-        var relatedProductsItems = relatedProducts.find('.slick-slide'),
-            relatedProductsItemsImage = $('.slick-slide img');
-        relatedProductsItemsImage.on({
-            mouseover: function() {
-                var li = $(this).parent();
-                li.find('.product-title').dequeue().show();
-            },
-            mouseout: function() {
-                var li = $(this).parent();
-                li.find('.product-title').dequeue().hide();
-            }
-        });
-
-        setTimeout(function() {
-            var isotope_item = $('.isotope-item');
-            $.each(isotope_item, function(i,elem) {
-                var anchor = $(elem).attr('href');
-                if ( undefined !== anchor ) {
-                    if ( anchor.includes('download') ) {
-                        $(elem).css('display','none');
-                    }
-                }
-            });
-        }, 2000);
-
-        var home_slider = $('.home #layer_slider_1'),
-            goToBtn = '<div id="jump" data-smooth-scroll data-animation-easing="swing" data-offset="69"><a href="#to-content"><i class="fa fa-chevron-down"></i></a></div><div id="to-content"></div>';
-
-            home_slider.append(goToBtn);
     });
 })(jQuery);
 
@@ -147,7 +81,7 @@ $(document).foundation();
                 this.setupUpdatedLi();
             },
             getData: function() {
-                // console.log(this.$php);
+                console.log(this.$php);
             },
             setVars: function() {
                 this.termsMegaMenu = $('.terms-mega-menu');
@@ -181,8 +115,7 @@ $(document).foundation();
                         var productLi = document.createElement('li'),
                             productAnchor = document.createElement('a');
                         productAnchor.innerHTML = '<span class="avia-bullet"></span>';
-                        productAnchor.prepend(el.post_title.replace(/&amp;/g, '&'));
-                        // console.log(el);
+                        productAnchor.prepend(el.post_name.replace(/&amp;/g, '&'));
                         productAnchor.setAttribute('href', baseUrl + '/product/' + el.post_name + '/');
                         productLi.append(productAnchor);
                         productUl.append(productLi);
@@ -279,159 +212,8 @@ $(document).foundation();
                         }
                     });
                 }, 1000);
-            },
-            addDocumentEvents: function() {
-                setTimeout(function() {
-                    var currentDoc = $('.support-document.current'),
-                        legacyDoc = $('.support-document.legacy'),
-                        allDocs = $('#type-download-heading'),
-                        allFilter = $('#filter-all'),
-                        currentFilter = $('#filter-current'),
-                        legacyFilter = $('#filter-legacy');
-
-                    allFilter.on('click', function() {
-                        legacyDoc.show();
-                        currentDoc.show();
-                    });
-
-                    currentFilter.on('click', function() {
-                        legacyDoc.hide();
-                        currentDoc.show();
-                    });
-
-                    legacyFilter.on('click', function() {
-                        legacyDoc.show();
-                        currentDoc.hide();
-                    });
-                }, 1000);
             }
         }
         var avidyne = new avidyneSupportFilters();
-    });
-})(jQuery);
-
-(function($) {
-    $(function() {
-        var width = $(window).width(),
-            height = $(window).height(),
-            map = $('#wpgmza_map_1'),
-            slideOut = $('#slide-out-form'),
-            slideOutTrigger = $('#slide-out-form .slide-out-trigger'),
-            slideOutClose = $('#slide-out-form .fa-times-circle, .slide-out .close-form'),
-            requestInfo = $('a.request-info'),
-            slideOutClose2 = $('.slide-out .close-form');
-
-        if ( map.length ) {
-            map.width(width);
-            map.height(height);
-        }
-
-        slideOutTrigger.on('click', function() {
-            slideOut.find('.slide-out').css('right','0');
-            slideOutClose2.css('left',-50);
-        });
-
-        slideOutClose.on('click', function() {
-            slideOut.find('.slide-out').css('right',-300);
-            slideOutClose2.css('left',350);
-        });
-
-        requestInfo.click(function(e) {
-            e.preventDefault();
-            slideOutTrigger.trigger('click');
-        });
-
-        $('.portrait-ipad').on({
-            mouseout: function() {
-                $('.landscape-ipad').removeClass('active').stop().dequeue().fadeOut(0);
-                $(this).stop().dequeue().fadeIn(0);
-            }
-        });
-
-        $('.portrait-ipad').on('hover', function() {
-            $(this).stop().dequeue().fadeOut(0);
-            $('.landscape-ipad').addClass('active').stop().dequeue().fadeIn(0);
-        });
-
-        $('.wpgmza_sl_search_button').on('click', function() {
-            if ( !$('.dealer-locator-reset').length ) {
-                $('.wpgmza-modern-store-locator').after('<div class="dealer-locator-reset"><i class="fa fa-times-circle"><span>Reset Search</span></i></div>');
-            }
-            $('.wpgmza-modern-store-locator').fadeOut(500);
-            $('.dealer-locator-reset').fadeIn(500);
-
-            $('.dealer-locator-reset').on('click', function() {
-                $('.wpgmza-modern-store-locator').fadeIn(500);
-                $('.dealer-locator-reset').fadeOut(500);
-                $('.wpgmza_sl_reset_button_div').trigger('click');
-                $('#addressInput_1').val('');
-            });
-        });
-        $('.wpgmza_checkbox').trigger('click');
-    });
-})(jQuery);
-
-// Filtering for product documentation and media assets
-(function($) {
-    $(function() {
-        var mediaLibraryFilters = $('.page-template-page-media-library div[id*="filter-"]');
-        $('.page-template-page-media-library div[id*="filter-"], .page-template-page-product-documentation div[id*="filter-"]').on('click', function() {
-            var filter = this.id,
-                filterArray = filter.split('-'),
-                filterId = filterArray[1];
-            if ('panel' === filterId) {
-                filterId = filterArray[1] + '-' + filterArray[2];
-            }
-            var filterClass = $('.' + filterId);
-            if ( 'all' == filterId ) {
-                $('.support-document').show();
-            } else {
-                $('.support-document').not(filterClass).hide();
-                filterClass.show();
-            }
-        });
-    });
-})(jQuery);
-
-(function($) {
-    $(function() {
-        var form = $('.slide-out button');
-        $('button.sales').addClass('selected');
-        form.on({
-             change: function(e) {
-                 form.removeClass('selected');
-                 $(this).addClass('selected');
-             }
-         });
-        form.bind({
-            click: function(e) {
-                e.preventDefault();
-                var department = $(this).text().replace(' ', '-').toLowerCase();
-                if ( department == 'general-inquiry' ) { // General
-                    $('.general-inquiry-form').trigger('click');
-                    $('#general-inquiry').fadeIn(1000);
-                } else if ( department == 'customer-support' ) { // Support
-                    console.log('CLICKED');
-                    $('#customer-support a').trigger('click');
-                     window.open($('#customer-support a').attr("href"), this.target);
-                } else { // Sales
-                    $('.sales-form').trigger('click');
-                    $('#sales').fadeIn(1000);
-                }
-                // Close slideout form
-                $(this).closest('.slide-out').css('right',-300);
-                $(this).closest('.close-form').css('left',-50);
-            }
-        });
-        $('.sales-form, .general-inquiry-form').magnificPopup({
-            type:'inline',
-            midClick: true
-        });
-        $('#menu-item-25').on({
-            click: function(e) {
-                e.preventDefault();
-                $('.slide-out-trigger').trigger('click');
-            }
-        });
     });
 })(jQuery);

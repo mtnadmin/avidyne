@@ -235,17 +235,17 @@ class WordPressDownloadManager{
 
 
         $labels = array(
-            'name' => __( "Product Types" , "download-manager" ),
-            'singular_name' => __( "Product Type" , "download-manager" ),
-            'search_items' => __( "Search Product Types" , "download-manager" ),
-            'all_items' => __( "All Product Types" , "download-manager" ),
-            'parent_item' => __( "Parent Product Type" , "download-manager" ),
-            'parent_item_colon' => __( "Parent Product Type:" , "download-manager" ),
-            'edit_item' => __( "Edit Category" , "download-manager" ),
-            'update_item' => __( "Update Product Type" , "download-manager" ),
-            'add_new_item' => __( "Add New Product Type" , "download-manager" ),
-            'new_item_name' => __( "New Product Type Name" , "download-manager" ),
-            'menu_name' => __( "Product Types" , "download-manager" ),
+            'name' => __( "Media Types" , "download-manager" ),
+            'singular_name' => __( "Media Type" , "download-manager" ),
+            'search_items' => __( "Search Media Types" , "download-manager" ),
+            'all_items' => __( "All Media Types" , "download-manager" ),
+            'parent_item' => __( "Parent Media Type" , "download-manager" ),
+            'parent_item_colon' => __( "Parent Media Type:" , "download-manager" ),
+            'edit_item' => __( "Edit Media" , "download-manager" ),
+            'update_item' => __( "Update Media Type" , "download-manager" ),
+            'add_new_item' => __( "Add New Media Type" , "download-manager" ),
+            'new_item_name' => __( "New Media Type Name" , "download-manager" ),
+            'menu_name' => __( "Media Types" , "download-manager" ),
         );
 
         $args = array(
@@ -442,7 +442,7 @@ class WordPressDownloadManager{
         $name = basename($name);
         if(strlen($name) < 40 && file_exists(WPDM_BASE_DIR."libs/class.{$name}.php")){
             require_once WPDM_BASE_DIR."libs/class.{$name}.php";
-        } else if(file_exists(WPDM_BASE_DIR.str_replace($class_file, 'class.'.$class_file.'.php', $relative_path))){
+        } else if(file_exists(WPDM_BASE_DIR.str_replace($class_file, 'class.'.$class_file.'.php', $relative_path))){             
             require_once WPDM_BASE_DIR.str_replace($class_file, 'class.'.$class_file.'.php', $relative_path);
         }
         */

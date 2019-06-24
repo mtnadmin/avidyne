@@ -27,9 +27,3 @@
   width: auto;
   z-index: 100000; // Above WP toolbar.
 }
-
-a {
-  &:hover {
-    text-decoration: none !important;
-  }
-}

@@ -64,14 +64,12 @@ p.wp-caption-text{
 
 body,
 .html_stretched {
-  @include breakpoint(large) {
-    #wrap_all {
+  #wrap_all {
+    background-color: transparent !important;
+    #header {
       background-color: transparent !important;
-      #header {
+      .header_bg {
         background-color: transparent !important;
-        .header_bg {
-          background-color: transparent !important;
-        }
       }
     }
   }

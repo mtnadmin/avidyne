@@ -3,6 +3,7 @@
 	if ( !defined('ABSPATH') ){ die(); }
 
 	global $avia_config;
+    $page = get_the_ID();
 
 	/*
 	 * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
@@ -23,7 +24,7 @@
 
                     <?php $posts = get_posts(array(
                             'post_type' => 'post',
-                            'numberposts' => 3,
+                            'numberposts' => 5,
                             'order' => 'DESC',
                             'orderby' => 'date',
                             'tax_query' => array(
@@ -49,7 +50,9 @@
                         $title = substr($title, 0, 100);
                         $title = substr($title, 0, strripos($title, " "));
                         $title = $title . '...';
+                        $image_class = 'custom-image';
                         if (!$image) {
+                            $image_class = 'fallback-image';
                             $image = get_bloginfo('url') . '/wp-content/uploads/2018/12/Avidyne-logo-green-2017.png';
                         }
                         $events .= '
@@ -57,7 +60,7 @@
                                 <div class="av-layout-grid-container entry-content-wrapper av-flex-cells container_wrap fullsize">
                                     <div class="item flex_cell no_margin content-wrapper" data-equalizer>
                                     [av_two_fifth first min_height="" vertical_alignment="" space="" custom_margin="" margin=""0px"" row_boxshadow="" row_boxshadow_color="" row_boxshadow_width=""10"" link="" linktarget="" link_hover="" padding=""0px"" highlight="" highlight_size="" border="" border_color="" radius=""0px"" column_boxshadow="" column_boxshadow_color="" column_boxshadow_width=""10"" background=""bg_color"" background_color="" background_gradient_color1="" background_gradient_color2="" background_gradient_direction=""vertical"" src="" background_position=""top left"" background_repeat=""no-repeat"" animation="" mobile_breaking="" mobile_display="" av_uid=""]
-                                            <div class="image-container" data-equalizer-watch>
+                                            <div class="image-container '. $image_class .'" data-equalizer-watch>
                                                 <img src="'. $image .'" alt="">
                                             </div>
                                         [/av_two_fifth]
@@ -69,7 +72,8 @@
                             </div>
                         ';
                     endforeach;
-                    echo do_shortcode('<div id="latest-news-section"><h2>Latest Media</h2><div class="row clearfix" data-equalizer>'. $events .'</div></div>'); ?>
+                    wp_reset_query();
+                    echo do_shortcode('<div id="latest-news-section"><h2>Latest Media</h2>'. wpautop(get_the_content()) .'<div class="row clearfix" data-equalizer>'. $events .'</div><a class="avidyne-green" href="'. get_bloginfo('url') .'/category/press-release/">View All</a></div>'); ?>
 
 				<!--end content-->
 				</main>
@@ -85,9 +89,9 @@
 
                 <?php $posts = get_posts(array(
                         'post_type' => 'post',
-                        'numberposts' => 10,
+                        'numberposts' => 20,
                         'order' => 'DESC',
-                        'orderby'  => array( 'meta_value_num' => 'ASC', 'title' => 'ASC' ),
+                        'orderby'  => array( 'meta_value_num' => 'ASC', 'title' => 'DESC' ),
                         'meta_key' => 'start_date',
                         'tax_query' => array(
                             array(
@@ -101,9 +105,8 @@
                     foreach($posts as $post) : setup_postdata($post);
                         $source = get_field('start_date', $post->ID);
                         $todays_date = new DateTime;
-                        $todays_date = $todays_date->format('Ymj');
-
-                        if ( $todays_date > $source || $count > 2 ) {
+                        $todays_date = $todays_date->format('Ymd');
+                        if ( strtotime($todays_date) > strtotime($source) || $count > 3 ) {
                             continue;
                         }
                         $first = '';
@@ -135,7 +138,7 @@
                             $first = 'first';
                         }
                         $feed .= '
-                        [av_one_third '. $first .' min_height="" vertical_alignment="" space="" custom_margin="" margin=""0px"" row_boxshadow="" row_boxshadow_color="" row_boxshadow_width=""10"" link="" linktarget="" link_hover="" padding=""0px"" highlight="" highlight_size="" border="" border_color="" radius=""0px"" column_boxshadow="" column_boxshadow_color="" column_boxshadow_width=""10"" background=""bg_color"" background_color="" background_gradient_color1="" background_gradient_color2="" background_gradient_direction=""vertical"" src="" background_position=""top left"" background_repeat=""no-repeat"" animation="" mobile_breaking="" mobile_display="" av_uid=""]
+                        [av_one_fourth '. $first .' min_height="" vertical_alignment="" space="" custom_margin="" margin=""0px"" row_boxshadow="" row_boxshadow_color="" row_boxshadow_width=""10"" link="" linktarget="" link_hover="" padding=""0px"" highlight="" highlight_size="" border="" border_color="" radius=""0px"" column_boxshadow="" column_boxshadow_color="" column_boxshadow_width=""10"" background=""bg_color"" background_color="" background_gradient_color1="" background_gradient_color2="" background_gradient_direction=""vertical"" src="" background_position=""top left"" background_repeat=""no-repeat"" animation="" mobile_breaking="" mobile_display="" av_uid=""]
                                 <div>
                                     <div class="av-layout-grid-container entry-content-wrapper av-flex-cells container_wrap fullsize">
                                         <div class="item flex_cell no_margin content-wrapper" data-equalizer>
@@ -143,15 +146,15 @@
                                             <div class="image-container">
                                                 <div><img src="'. $image .'" alt=""></div>
                                             </div>
-                                                <div class="item-content clearfix"><a href="'. $permalink .'"><strong>'. $title .'</strong></a><div class="location">'. $location .'</div>'. $excerpt .'<a href="'. $permalink .'" class="read-more avidyne-teal">Read more</a></div>
+                                                <div class="item-content clearfix"><a href="'. $permalink .'"><strong>'. $title .'</strong></a><div class="location">'. $location .'</div>'. $excerpt .'</div>
                                         </div>
                                     </div>
                                 </div>
-                            [/av_one_third]
+                            [/av_one_fourth]
                         ';
                         $count++;
                     endforeach;
-                    echo do_shortcode('<div id="latest-events-section"><h2>Upcoming Events</h2><div class="row clearfix" data-equalizer>'. $feed .'</div><a href="#" class="view-all">View All</a></div>'); ?>
+                    echo do_shortcode('<div id="latest-events-section"><h2>Upcoming Events</h2><div class="row clearfix" data-equalizer>'. $feed .'</div><a href="'. get_bloginfo('url') .'/category/trade-shows-events/" style="display:none;" class="view-all">View All</a></div>'); ?>
 
 
             </div>

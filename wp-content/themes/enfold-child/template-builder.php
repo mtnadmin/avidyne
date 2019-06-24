@@ -24,22 +24,6 @@ if ( in_array('single-product',get_body_class()) ) {
 
      do_action( 'ava_after_main_title' );
 
-     // $meta = get_post_meta($post->ID);
-     // $dis = $meta['product_compatibility_compatibility_details'][0];
-     // $five_forty = get_post_meta(2718);
-     // // update_post_meta(2718,'product_compatibility_compatibility_details',$dis);
-     // // var_dump($dis);
-
-     // foreach( $meta as $key => $item ) {
-     //    // echo '<br /><br />' . $key . ' = ';
-     //    // var_dump($item);
-     //    if ( stripos($key, 'product_functionality') !== false ) {
-     //        // echo '<br /><br />' . $key . ' = ' . $item[0];
-     //        // update_post_meta(2752,$key,$item[0]);
-     //        // update_post_meta(2718,$key,$item[0]);
-     //    }
-     // }
-
      // Above the fold
      $general_product_details = get_field( 'general_product_details', $post->ID );
      $post_title = get_the_title( $post );
@@ -50,7 +34,7 @@ if ( in_array('single-product',get_body_class()) ) {
      // Below the fold
      $product_overview = get_post( $post->ID )->post_content;
      $product_specifications = get_field( 'product_specifications', $post->ID );
-     $product_compatibility = get_field( 'product_compatibility', $post->ID );
+     $product_compatibility = get_field( 'compatibility_details', $post->ID );
      $product_functionality = get_field( 'product_functionality', $post->ID );
      $product_documents = get_field( 'product_documentation', $post->ID );
      $advance_layout_builder_overview_content = get_field( 'product_overview_content_sections', $post->ID );
@@ -174,7 +158,7 @@ if ( in_array('single-product',get_body_class()) ) {
                         }
 
                         // Setup anchor tags
-                        $anchors = "<div class='product-links'><a href='#' class='request-info button'>Request Info</a><a href='#' class='find-a-dealer button'>Find a Dealer</a></div>";
+                        $anchors = "<div class='product-links'><a href='#' class='request-info button'>Request Info</a><a href='". get_bloginfo('url') ."/find-a-dealer/' class='find-a-dealer button'>Find a Dealer</a></div>";
                         if ( $product->ID === 2691 ) {
                             $price = '';
                             $anchors = "<div class='product-links'><a href='https://itunes.apple.com/us/app/avidyne-ifd100/id1094839820?mt=8' class='download-now button'>Download Now</a></div>";

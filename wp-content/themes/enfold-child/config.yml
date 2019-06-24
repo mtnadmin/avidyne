@@ -10,7 +10,7 @@ COMPATIBILITY:
   - "ios >= 7"
 
 # Set to true if you want static asset revisioning, helpful for cache busting
-REVISIONING: false
+REVISIONING: true
 
 # Gulp will reference these paths when it copies files
 PATHS:
@@ -26,7 +26,6 @@ PATHS:
     - "node_modules/motion-ui/src"
     - "node_modules/font-awesome/scss/font-awesome"
     - "node_modules/slick-carousel/slick/slick"
-    - "node_modules/magnific-popup/src/css/main"
   # Paths to JavaScript entry points for webpack to bundle modules
   entries:
     - "src/assets/js/app.js"
