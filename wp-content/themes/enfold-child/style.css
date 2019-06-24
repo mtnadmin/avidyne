@@ -1,0 +1,61 @@
+/*
+Theme Name: Enfold Child
+Description: A <a href='http://codex.wordpress.org/Child_Themes'>Child Theme</a> for the Enfold Wordpress Theme. If you plan to do a lot of file modifications we recommend to use this Theme instead of the original Theme. Updating wil be much easier then.
+Version: 1.0
+Author: Kriesi
+Author URI: http://www.kriesi.at
+Template: enfold
+*/
+
+
+
+/*Add your own styles here:*/
+
+#layer_slider_1 {
+    background: #929292;
+}
+
+#after_layer_slider_1 > .container {
+    max-width: 100%;
+    padding: 0;
+}
+
+#header_main .logo img {
+    margin: 25px 0;
+}
+
+.main_menu .sub-menu {
+    padding: 0 !important;
+}
+
+#top #header .avia_mega_div > .sub-menu > li#menu-item-126,
+#top #header .avia_mega_div > .sub-menu > li#menu-item-125,
+#top #header .avia_mega_div > .sub-menu > li#menu-item-127,
+#top #header .avia_mega_div > .sub-menu > li#menu-item-134 {
+    padding: 20px;
+}
+
+#top #header .avia_mega_div > .sub-menu > li#menu-item-126,
+#top #header .avia_mega_div > .sub-menu > li#menu-item-134,
+#top #header .avia_mega_div > .sub-menu > li#menu-item-126 .sub-menu {
+    background-color: #f0f0f0;
+}
+
+#top #header .avia_mega_div > .sub-menu > li#menu-item-125,
+#top #header .avia_mega_div > .sub-menu > li#menu-item-125 .sub-menu {
+    background-color: #e2e2e2;
+}
+
+#top #header .avia_mega_div > .sub-menu > li#menu-item-126 .mega_menu_title {
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+

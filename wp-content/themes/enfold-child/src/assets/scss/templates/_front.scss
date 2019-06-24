@@ -1,0 +1,900 @@
+// @include breakpoint(small) {
+// }
+
+// @include breakpoint(medium) {
+// }
+
+// @include breakpoint(large) {
+// }
+
+#top.home {
+  @include breakpoint(small) {
+    // 0+
+    .av_one_half {
+      width: 100%;
+      display: table;
+    }
+
+  }
+
+  @include breakpoint(xlarge) {
+    // 1200
+    .av_one_half {
+      width: 50%;
+      display: table-cell;
+    }
+
+  }
+
+  .entry-content-wrapper {
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+
+  .home-accordion-slider {
+    .aviaccordion-slide {
+    }
+
+    .aviaccordion-preview {
+      &:hover {
+        cusor: pointer;
+      }
+
+    }
+
+    h3 {
+      display: block;
+      font-size: rem-calc(30);
+      color: $white;
+
+      &::before {
+        content: 'Solutions For';
+        text-transform: uppercase;
+        display: block;
+        font-size: rem-calc(14);
+      }
+
+    }
+
+    br {
+      display: none;
+    }
+
+    p {
+      font-weight: $global-weight-light;
+      line-height: 1.3;
+      color: $white;
+      margin-left: auto;
+      margin-right: auto;
+
+      @include breakpoint(small) {
+        // 0+
+        font-size: rem-calc(16);
+      }
+
+      @include breakpoint(medium) {
+        // 640
+      }
+
+      @include breakpoint(large) {
+        // 1024
+        font-size: rem-calc(16);
+      }
+
+      @include breakpoint(xlarge) {
+        // 1200
+        font-size: rem-calc(18);
+      }
+
+      @include breakpoint(xxlarge) {
+        // 1440
+        font-size: rem-calc(20);
+      }
+
+    }
+
+    button {
+      @include white-hollow-btn($white, #000, "");
+    }
+
+  }
+
+  .home-icon {
+    margin: auto;
+    display: block;
+    max-width: rem-calc(125);
+    width: 100%;
+  }
+
+  .consumer-report-link,
+  .dealer-link {
+    @include white-hollow-btn($white, #000, "\f061");
+    display: table;
+    margin: rem-calc(25) auto 0;
+  }
+
+  .avidyne-event {
+    &:nth-child(n+4) {
+      display: none !important;
+    }
+
+  }
+
+  #layer_slider_1 {
+    .ls-layer {
+      h1,
+      p,
+      a {
+        display: block;
+        color: $white;
+      }
+
+      h1 {
+        line-height: 1;
+        margin: auto;
+
+        @include breakpoint(small) {
+          // 0+
+          font-size: rem-calc(24);
+        }
+
+        @include breakpoint(medium) {
+          // 640
+        }
+
+        @include breakpoint(large) {
+          // 1024
+          font-size: rem-calc(40);
+
+          br {
+            display: inline-block;
+          }
+
+        }
+
+        @include breakpoint(xlarge) {
+          // 1200
+        }
+
+        @include breakpoint(xxlarge) {
+          // 1440
+        }
+
+      }
+
+      p {
+        font-size: rem-calc(20);
+        line-height: 1.3;
+        margin: rem-calc(25) 0 rem-calc(35) !important;
+      }
+
+      p + a {
+        display: table;
+        padding: rem-calc(10 30);
+        border: 2px solid $white;
+        @include white-hollow-btn($white, #000, "");
+
+        &:hover {
+          @include white-hollow-btn($white, #000, "");
+          color: $black !important;
+          text-decoration: none;
+        }
+
+      }
+
+    }
+
+  }
+
+  #main {
+    @include breakpoint(small) {
+      // 0+
+    }
+
+    @include breakpoint(medium) {
+      // 0+
+      padding-top: rem-calc(39) !important;
+    }
+
+    @include breakpoint(large) {
+      // 1024
+    }
+
+  }
+
+  #home-gps-navigators,
+  #ads-b-traffic-weather,
+  #home-limited-offers {
+    a {
+      @include white-hollow-btn($avidyne-blue, $white, "\f061");
+      font-size: rem-calc(18);
+    }
+
+    h3 {
+      line-height: 1.2;
+      margin-bottom: rem-calc(10);
+      color: $avidyne-accent;
+
+      @include breakpoint(small) {
+        // 0+
+        font-size: rem-calc(24);
+      }
+
+      @include breakpoint(medium) {
+        // 640
+      }
+
+      @include breakpoint(large) {
+        // 1024
+        font-size: rem-calc(34);
+
+        br {
+          display: inline-block;
+        }
+
+      }
+
+      @include breakpoint(xlarge) {
+        // 1200
+      }
+
+      @include breakpoint(xxlarge) {
+        // 1440
+      }
+
+    }
+
+    p {
+      font-size: rem-calc(20);
+      line-height: 1.4;
+    }
+
+    .v-mid {
+      vertical-align: middle !important;
+    }
+
+    .avia-image-container-inner {
+      display: block;
+
+      img {
+        border-radius: 0;
+      }
+
+    }
+
+    br {
+      @include breakpoint(small) {
+        // 0+
+        display: none;
+      }
+
+      @include breakpoint(large) {
+        // 640
+        display: inline-block;
+      }
+
+    }
+
+  }
+
+  #home-gps-navigators {
+    p {
+      font-size: rem-calc(20);
+      line-height: 1.4;
+    }
+
+    .flex_cell {
+      @media all and (max-width: 1200px) {
+        padding: rem-calc(50 20) !important;
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
+
+    }
+
+  }
+
+  #av-layout-grid-4 {
+    .flex_cell {
+      @media all and (max-width: 1200px) {
+        padding: rem-calc(50 20) !important;
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
+
+      &.avia-builder-el-first {
+        @media all and (max-width: 1200px) {
+          padding: rem-calc(50 20 0) !important;
+          padding-left: 8% !important;
+          padding-right: 8% !important;
+        }
+
+      }
+
+    }
+  }
+
+  #ads-b-traffic-weather {
+    .flex_cell {
+      @media all and (max-width: 1200px) {
+        padding: rem-calc(50 20) !important;
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
+
+    }
+  }
+
+  #home-limited-offers {
+    a {
+      @include white-hollow-btn($avidyne-green, $white, "\f061");
+      font-size: rem-calc(18);
+    }
+
+    h3 {
+      line-height: 1;
+      margin-bottom: rem-calc(10);
+    }
+
+    p {
+      font-size: rem-calc(20);
+      margin-bottom: rem-calc(15);
+    }
+
+    .flex_cell_inner {
+      max-width: rem-calc(600);
+      margin: auto;
+
+      .blue-limited {
+        p {
+          margin: rem-calc(10 0 0);
+          color: $avidyne-blue;
+        }
+
+      }
+
+    }
+
+    .av-special-heading {
+      margin-top: rem-calc(5);
+    }
+
+    .flex_cell {
+      @media all and (max-width: 1200px) {
+        padding: rem-calc(50 20) !important;
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
+
+      &.avia-builder-el-first {
+        @media all and (max-width: 1200px) {
+          padding: rem-calc(50 20 0) !important;
+          padding-left: 8% !important;
+          padding-right: 8% !important;
+        }
+
+      }
+
+    }
+
+    @media all and (max-width:1200px) {
+    }
+
+  }
+
+  #after_full_slider_0 {
+    .container {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      .content {
+        padding: 0 !important;
+      }
+
+    }
+
+    #home-mobile-accordion-slider {
+      .mobile-accordion-slide,
+      .mobile-accordion-slide > .wrapper {
+        background-size: 1280px 430px;
+        background-repeat: no-repeat;
+        background-color: rgba(0, 0, 0, .5);
+        min-height: rem-calc(430);
+
+        @include breakpoint(small) {
+          // 1024
+          width: 100%;
+        }
+
+        &.general-aviation {
+          background-image: url('../images/ga-accordion1-1280x430.jpg');
+        }
+
+        &.corporate-jets {
+          background-image: url('../images/cj-accordion1-1280x430.jpg');
+        }
+
+        &.helicopters {
+          background-image: url('../images/8th-gilkey--1500x430.jpg');
+        }
+
+      }
+
+      .mobile-accordion-slide > .wrapper {
+        padding: rem-calc(85 30);
+
+        p,
+        h3,
+        a {
+          color: $white;
+        }
+
+        p {
+          br {
+            @include breakpoint(small) {
+              // 0+
+              display: none;
+            }
+
+            @include breakpoint(large) {
+              // 1024
+              display: inline-block;
+            }
+
+          }
+
+          @include breakpoint(small) {
+            // 0+
+            font-size: rem-calc(15);
+          }
+
+          @include breakpoint(medium) {
+            // 0+
+            font-size: rem-calc(18);
+          }
+
+          @include breakpoint(large) {
+            // 1024
+            display: inline-block;
+          }
+
+        }
+
+        h3 {
+          @include breakpoint(small) {
+            // 0+
+            font-size: rem-calc(22);
+          }
+
+          @include breakpoint(medium) {
+            // 0+
+            font-size: 1.875rem;
+          }
+
+          @include breakpoint(large) {
+            // 1024
+          }
+
+        }
+
+        a {
+          padding: 0.625rem 1.875rem !important;
+          color: $white !important;
+          border-color: $white !important;
+          border-width: 0.125rem;
+          border-style: solid;
+          background: transparent;
+          transition: all 250ms ease-in-out;
+
+          &:hover {
+            background: #ffffff;
+            color: #000 !important;
+            border-color: #ffffff;
+            transition: all 250ms ease-in-out;
+            cursor: pointer;
+          }
+
+        }
+
+      }
+
+    }
+
+    @include breakpoint(small) {
+      // 0+
+      padding: 0 !important;
+    }
+
+    @include breakpoint(large) {
+      // 1024
+      display: none;
+    }
+
+  }
+
+  #accordion_slider_0 {
+    @include breakpoint(small) {
+      // 0+
+      display: none;
+    }
+
+    @include breakpoint(large) {
+      // 1024
+      display: block;
+    }
+
+  }
+
+  .special-heading-border {
+    display: none;
+  }
+
+  .home-support {
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#142539+0,1f1615+100 */
+    background: #142539; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #142539 0%, #1f1615 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #142539 0%, #1f1615 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #142539 0%, #1f1615 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#142539', endColorstr='#1f1615', GradientType=1);
+
+    /* IE6-9 fallback on horizontal gradient */
+    .flex_cell {
+      background: transparent !important;
+    }
+
+    h3,
+    p {
+      color: $white !important;
+    }
+
+    h3 {
+      font-size: rem-calc(32);
+    }
+
+    p {
+      text-align: center;
+      font-size: rem-calc(16);
+      br {
+        @include breakpoint(small) {
+          display: none !important;
+        }
+        @include breakpoint(med-larg) {
+          display: inline-block !important;
+        }
+      }
+    }
+
+    .av-special-heading {
+      margin: rem-calc(30 0 0 0);
+    }
+
+    .av-icon-char {
+      color: $avidyne-green;
+      border-color: $avidyne-green !important;
+      background-color: $avidyne-green;
+
+      &::after,
+      &::before {
+        color: $avidyne-green;
+        border-color: $avidyne-green !important;
+        background-color: $avidyne-green;
+      }
+
+    }
+
+  }
+
+  #latest-news-section {
+    .image-container,
+    .item-content {
+      float: left;
+    }
+
+    .item {
+      padding-bottom: 0;
+    }
+
+    .image-container {
+      padding-right: 0;
+      float: left;
+
+      img {
+        display: block;
+        width: 100%;
+        @include breakpoint(small) {
+          max-width: 100%;
+          margin: auto auto rem-calc(15);
+        }
+        @include breakpoint(medium) {
+          max-width: rem-calc(150);
+          margin: auto;
+        }
+      }
+
+      @include breakpoint(small) {
+        width: 100%;
+      }
+
+      @include breakpoint(medium) {
+      }
+
+      @include breakpoint(large) {
+        width: 15%;
+      }
+
+    }
+
+    .item-content {
+      
+
+      @include breakpoint(small) {
+        padding-left: 0;
+      }
+      @include breakpoint(large) {
+        padding-left: 15px;
+      }
+
+      a {
+        display: block;
+
+        &.read-more {
+          color: $avidyne-green;
+          display: inline-block;
+          font-size: rem-calc(20);
+        }
+
+        strong {
+          font-size: rem-calc(20);
+          line-height: 1.2;
+          margin-bottom: rem-calc(5);
+          display: block;
+          color: $black;
+          transition: all 250ms ease-in-out;
+        }
+
+        &:hover {
+          text-decoration: none;
+
+          strong {
+            color: $avidyne-green;
+            transition: all 250ms ease-in-out;
+          }
+
+        }
+
+      }
+
+      p,
+      span {
+        display: inline-block;
+        font-size: rem-calc(16);
+        line-height: 1.2;
+      }
+
+      @include breakpoint(small) {
+        width: 100%;
+      }
+
+      @include breakpoint(medium) {
+      }
+
+      @include breakpoint(large) {
+        width: 85%;
+      }
+
+    }
+
+  }
+
+  #after_submenu_5 {
+    .container {
+      max-width: 100%;
+      width: 100%;
+      padding: 0;
+
+      .content {
+        padding: 0;
+      }
+
+      .background-gradient {
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#142539+0,1f1615+100 */
+        background: #142539; /* Old browsers */
+        background: -webkit-linear-gradient(bottom left, #142539 0%, #1f1615 100%);
+        background: -o-linear-gradient(bottom left, #142539 0%, #1f1615 100%);
+        background: linear-gradient(to top right, #142539 0%, #1f1615 100%); /* FF3.6-15 */
+
+        /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#142539', endColorstr='#1f1615', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+      }
+
+    }
+
+    #testimonials {
+      position: relative;
+    }
+
+    .testimonials {
+      max-height: rem-calc(535);
+
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+      }
+
+      .no_padding {
+        padding: 0 !important;
+      }
+
+      .slick-list {
+        padding: 0 !important;
+      }
+
+      .slick-arrow {
+        color: $white;
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: rem-calc(32);
+        width: rem-calc(43);
+        opacity: .25;
+        transition: all 250ms ease-in-out;
+
+        &:hover {
+          opacity: 1;
+          transition: all 250ms ease-in-out;
+        }
+
+        &::before {
+          color: $white;
+          font-family: FontAwesome;
+          font-size: rem-calc(60);
+        }
+
+        &.slick-next {
+          right: rem-calc(50);
+
+          &::before {
+            content: "\f054"
+          }
+
+        }
+
+        &.slick-prev {
+          left: rem-calc(50);
+
+          &::before {
+            content: "\f053"
+          }
+
+        }
+
+      }
+
+      .slick-slide {
+        li {
+          .background-gradient {
+            vertical-align: middle !important;
+
+            @include breakpoint(small) {
+              // 0+
+              padding: rem-calc(40 20) !important;
+            }
+
+            @include breakpoint(medium) {
+              // 640
+            }
+
+            @include breakpoint(large) {
+              // 1024
+              padding: rem-calc(40 100) !important;
+
+              br {
+                display: inline-block;
+              }
+
+            }
+
+            @include breakpoint(xlarge) {
+              // 1200
+            }
+
+            @include breakpoint(xxlarge) {
+              // 1440
+            }
+
+            .wrapper {
+              text-align: center;
+            }
+
+            .divider {
+              height: rem-calc(3);
+              background-color: $avidyne-blue;
+              margin: rem-calc(25) auto;
+              max-width: rem-calc(200);
+            }
+
+            strong,
+            span {
+              display: block;
+              color: $white;
+            }
+
+            strong {
+              font-size: rem-calc(22);
+              line-height: 1;
+            }
+
+            span {
+              font-size: rem-calc(16);
+            }
+
+            a {
+              @include white-hollow-btn($white, #000, "");
+              display: table;
+              margin: rem-calc(40) auto 0;
+              font-size: rem-calc(18);
+            }
+
+          }
+
+          p {
+            color: $white;
+            font-style: italic;
+            line-height: 1.2;
+            text-align: center;
+
+            @include breakpoint(small) {
+              // 0+
+              font-size: rem-calc(18);
+            }
+
+            @include breakpoint(medium) {
+              // 640
+            }
+
+            @include breakpoint(large) {
+              // 1024
+              font-size: rem-calc(26);
+
+              br {
+                display: inline-block;
+              }
+
+            }
+
+            @include breakpoint(xlarge) {
+              // 1200
+            }
+
+            @include breakpoint(xxlarge) {
+              // 1440
+            }
+
+            &::before,
+            &::after {
+              content: '"';
+              font-style: italic;
+              display: inline-block;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

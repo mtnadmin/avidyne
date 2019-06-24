@@ -1,0 +1,45 @@
+@mixin white-hollow-btn($hex, $color, $arrow:"") {
+  padding: rem-calc(10 30) !important;
+  color: $hex !important;
+  border-color: $hex !important;
+  border-width: rem-calc(2);
+  border-style: solid;
+  background: transparent;
+  transition: all 250ms ease-in-out;
+  @if $arrow != "" {
+    &::after {
+      font-family: FontAwesome;
+      content: $arrow;
+      display: inline-block;
+      color: $hex;
+      margin-left: rem-calc(5);
+      font-weight: $global-weight-light;
+      transition: all 250ms ease-in-out;
+      font-size: rem-calc(16);
+    }
+  }
+  &:hover {
+    background: $hex;
+    color: $color !important;
+    border-color:  $hex;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    @if $arrow != "" {
+      &::after {
+        color: $color;
+        transition: all 250ms ease-in-out;
+      }
+    }
+  }
+}
+
+@mixin avidyne-clearfix() {
+  &::after,
+  &::before {
+    content: " ";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}

@@ -1,0 +1,36 @@
+#header_main {
+  .main_menu {
+    ul {
+      li {
+        a {
+          color: $white;
+          text-transform: uppercase;
+          font-weight: $global-weight-normal;
+          font-size: rem-calc(16);
+        }
+        &#menu-item-24 {
+          a {
+            span.avia-menu-text {
+              border: 1px solid $white;
+              padding: rem-calc(5 10);
+            }
+          }
+        }
+      }
+      &.sub-menu {
+        li {
+          a {
+            color: $satan-gray;
+            font-size: rem-calc(14) !important;
+            &:hover {
+              color: $avidyne-green !important;
+            }
+          }
+        }
+        &.avidyne-mega-hover {
+          margin-top: rem-calc(33);
+        }
+      }
+    }
+  }
+}
